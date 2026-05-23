@@ -1,8 +1,14 @@
 # Research Vault Template
 
+[![Built for Claude](https://img.shields.io/badge/Built%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.com)
+
 Template for a single-topic research knowledge vault — an Obsidian vault paired
 with a Claude agent that records, verifies, and expands a research exploration
 process (ideas, approaches, evidence, experiments, problems).
+
+> **Designed for Claude.** The agent runs on Claude (via Claude Code or Cowork):
+> `CLAUDE.md` provides its always-on instructions and `.claude/skills/` holds the
+> skills it invokes. Outside a Claude environment, the files are just Markdown.
 
 ## Using this template
 
