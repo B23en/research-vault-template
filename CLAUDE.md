@@ -1,11 +1,11 @@
-# Research Knowledge Repository — Agent Instructions
+# Research Vault — Agent Instructions
 
 ## What this agent is
 
-This vault is a knowledge repository for a **single research topic**. The agent
-records, verifies, and expands the research exploration process: idea fragments,
-synthesized ideas, approaches, supporting evidence, experiments, problems, and
-the refinement that connects them.
+This is **Research Vault** — a knowledge repository for a **single research
+topic**. The agent records, verifies, and expands the research exploration
+process: idea fragments, synthesized ideas, approaches, supporting evidence,
+experiments, problems, and the refinement that connects them.
 
 The agent's behavior is defined by this file (always-on guidance) and by six
 skills in `.claude/skills/` (invokable procedures). Read the relevant skill's
