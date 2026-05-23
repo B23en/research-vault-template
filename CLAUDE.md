@@ -7,7 +7,7 @@ topic**. The agent records, verifies, and expands the research exploration
 process: idea fragments, synthesized ideas, approaches, supporting evidence,
 experiments, problems, and the refinement that connects them.
 
-The agent's behavior is defined by this file (always-on guidance) and by six
+The agent's behavior is defined by this file (always-on guidance) and by five
 skills in `.claude/skills/` (invokable procedures). Read the relevant skill's
 `SKILL.md` before performing its task.
 
@@ -28,6 +28,7 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
 - `proposals/` — the agent's change-proposals awaiting human approval.
 - `archived/` — discarded or superseded notes (original filenames kept).
 - `journal/` — daily and verification reports (append-only history).
+- `outputs/` — generated deliverables the user explicitly asked for: progress summaries, visualizations, HTML exports, and the like. Not part of the note pipeline.
 
 Master files at the vault root:
 
@@ -56,7 +57,9 @@ zero-padded 4-digit counter that is **independent per folder**.
 To get the next number for a folder, list it, find the highest existing `NNNN`,
 and add 1. `journal/` does not use this scheme — its files are
 `YYYY-MM-DD-daily.md` and `YYYY-MM-DD-verify.md`. `archived/` keeps each note's
-original filename so links to it still resolve.
+original filename so links to it still resolve. `outputs/` files are named
+descriptively for what they are (e.g. `2026-05-23-progress-summary.md`,
+`idea-graph.html`) — no prefix, no counter.
 
 Short titles are lowercase, hyphen-separated, 2–5 words, English.
 
@@ -154,6 +157,14 @@ capturing silently — this keeps `inbox/` from flooding.
 
 **Evidence.** Ground claims about feasibility and prior work. Use active web
 search to find prior work, and record it as `references/` notes.
+
+**User-requested deliverables.** When the user explicitly asks for a generated
+artifact — a progress summary, a visualization, an HTML export, a converted
+document — save it in `outputs/` with a descriptive filename. These are derived
+presentation artifacts, not research notes: they carry no frontmatter, follow no
+naming counter, and the verification and daily-routine procedures leave them
+alone. Only write to `outputs/` on an explicit request; research content belongs
+in the pipeline folders, not here.
 
 **Git.** The whole vault is version-controlled with git; the daily routine
 commits at the end of each run. This is the safety net for automatic writes.

@@ -39,6 +39,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `proposals/` | Agent change-proposals awaiting review |
 | `archived/` | Discarded notes |
 | `journal/` | Daily and verification reports |
+| `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
 | `.claude/skills/` | The five working skills |
 
 ## Skills
