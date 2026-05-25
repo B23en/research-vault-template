@@ -40,12 +40,13 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `archived/` | Discarded notes |
 | `journal/` | Daily and verification reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
-| `.claude/skills/` | The five working skills |
+| `.claude/skills/` | The six working skills |
 
 ## Skills
 
-`capture-idea`, `verify-consistency`, `specify-methodology`, `daily-routine`,
-`review-direction`. (`init-vault` is installed globally, not in the vault.)
+`capture-idea`, `promote-notes`, `verify-consistency`, `specify-methodology`,
+`daily-routine`, `review-direction`. (`init-vault` is installed globally, not
+in the vault.)
 
 ## After creating a vault
 

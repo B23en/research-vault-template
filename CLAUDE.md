@@ -171,9 +171,12 @@ commits at the end of each run. This is the safety net for automatic writes.
 
 ## Skills
 
-Five working skills live in this vault's `.claude/skills/`:
+Six working skills live in this vault's `.claude/skills/`:
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
+- `promote-notes` — explicit, batched promotion from `inbox/` to `ideas/` and
+  from `ideas/` to `approaches/`; presents a candidate slate for approval before
+  writing anything.
 - `verify-consistency` — check live notes against `Direction.md` and report
   conflicts, ambiguity, duplication, and orphans.
 - `specify-methodology` — turn an approach into an experiment design backed by
@@ -182,10 +185,10 @@ Five working skills live in this vault's `.claude/skills/`:
 - `review-direction` — manual meta-review: new-contribution candidates and
   direction revisions.
 
-A sixth skill, `init-vault`, is **not** in the vault. It is installed globally
+A seventh skill, `init-vault`, is **not** in the vault. It is installed globally
 (`~/.claude/skills/`) and bootstraps a new vault by fetching this whole
-environment — this file, the five skills above, and the master-file templates —
-from the template repository. Because the five skills are fetched from that
+environment — this file, the six skills above, and the master-file templates —
+from the template repository. Because the six skills are fetched from that
 repository, improving one means editing it once there; new vaults then pick up
 the latest version.
 

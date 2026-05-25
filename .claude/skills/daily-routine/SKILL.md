@@ -21,6 +21,11 @@ Note: the meta-level review — proposing *new contributions* and *revisions to
 `Direction.md`* — is deliberately **not** part of this routine. That is the
 `review-direction` skill, which the user invokes manually when they want it.
 
+Likewise, **batched promotion** (`inbox/` → `ideas/`, `ideas/` → `approaches/`)
+is not part of this routine — it is the `promote-notes` skill, invoked manually.
+The routine's *Expand* step branches notes sideways; it does not advance them up
+the pipeline.
+
 ## The five steps
 
 Run them in order. Each step contributes a section to the daily report.
