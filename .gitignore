@@ -2,6 +2,7 @@
 .DS_Store
 Thumbs.db
 
-# Obsidian workspace state (per-machine; uncomment to ignore)
-# .obsidian/workspace.json
-# .obsidian/workspace-mobile.json
+# Obsidian workspace state (per-machine)
+.obsidian/graph.json
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
