@@ -35,9 +35,10 @@ Master files at the vault root:
 - `CLAUDE.md` — this file. Agent configuration and vault rules.
 - `Direction.md` — the overall research direction and confirmed decisions. This
   is the **verification baseline**: everything in it is treated as decided.
-- `Memory.md` — two sections. `## Open Questions` holds long-term unresolved
-  questions; `## Working Context` holds short-term context the agent maintains
-  in real time.
+- `Memory.md` — three sections. `## Conventions` holds standing rules that
+  apply across the vault (e.g. authoring language). `## Open Questions` holds
+  long-term unresolved questions. `## Working Context` holds short-term
+  context the agent maintains in real time.
 
 ## Note naming
 
@@ -146,6 +147,9 @@ decision in progress, a thread to pick up later, session context — record it
 under `## Working Context` in `Memory.md` as you go. When an item becomes
 invalid or is promoted into a permanent note, remove it immediately. The
 `## Open Questions` section is long-term; do not auto-prune it.
+`## Conventions` section holds standing rules (authoring language, formatting
+norms, naming overrides); add to it only on explicit user instruction and
+never auto-prune it.
 
 **Promotion is conversational.** Moving the research forward a stage happens with
 the user. When material looks ready, propose it adaptively ("Shall I synthesize
