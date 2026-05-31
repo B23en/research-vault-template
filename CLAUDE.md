@@ -170,8 +170,15 @@ naming counter, and the verification and daily-routine procedures leave them
 alone. Only write to `outputs/` on an explicit request; research content belongs
 in the pipeline folders, not here.
 
-**Git.** The whole vault is version-controlled with git; the daily routine
-commits at the end of each run. This is the safety net for automatic writes.
+**Git.** The whole vault is version-controlled with git. Commit at your own
+discretion once you have completed a meaningful unit of work — a captured
+fragment, an approved promotion batch, an applied proposal — using a short,
+descriptive message (e.g. `capture: gpu-memory-trick`, `promote: 3 inbox -> ideas`,
+`apply prop-0009: revise scope`). The daily routine also commits at the end of
+each run as a backstop, so this is the safety net for automatic writes. Two
+rules bound the discretion: commit only complete, consistent states — never a
+half-finished change or an unapproved modification — and commit locally only;
+do not push unless the user asks.
 
 ## Skills
 
