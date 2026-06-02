@@ -39,6 +39,11 @@ Master files at the vault root:
   apply across the vault (e.g. authoring language). `## Open Questions` holds
   long-term unresolved questions. `## Working Context` holds short-term
   context the agent maintains in real time.
+- `Glossary.md` — canonical registry of project-coined codes and abbreviations
+  (experiment-variant codes, contribution labels, hypothesis IDs, route/option
+  letters, custom metric names). A descriptive index, not a decision baseline:
+  it records what each code means and links to where it is defined. General
+  domain terms and model names do not belong here.
 
 ## Note naming
 
@@ -105,6 +110,28 @@ wiki-links — `[[note-filename-without-extension]]` — in two places:
 Link by filename stem, e.g. `[[idea-0003-adaptive-batching]]`. Because promotion
 creates new notes instead of renaming, and `archived/` keeps original filenames,
 these links stay valid for the life of the vault.
+
+## Glossary
+
+`Glossary.md` at the vault root is the canonical registry of **project-coined
+codes** — the local symbols the research invents (experiment-variant codes like
+`B1`, contribution labels like `C1`, hypothesis IDs, route/option letters,
+custom metric or parameter names). Its purpose is traceability: a code stays
+readable months later instead of forcing a hunt through old notes.
+
+- **Scope.** Only symbols this project coins. General domain terms and
+  model/method names belong in `Memory.md` `## Conventions` or are external — not
+  here.
+- **Format.** One entry per code: the symbol, a one-line definition, and a
+  `[[wiki-link]]` to the note where it is authoritatively defined. Codes are
+  grouped into category sections so the same letter in two different families
+  does not collide; a genuinely overloaded symbol is marked and disambiguated.
+- **Authority.** The Glossary is a descriptive index, not a baseline —
+  `Direction.md` stays ground truth. Defining a new code is additive (write it
+  directly). Redefining an existing code is a *change* and goes through
+  `proposals/`, because downstream notes and filenames depend on the old meaning.
+- **Upkeep.** `verify-consistency` flags codes used in notes but missing from
+  the Glossary, or used in a way that conflicts with their entry.
 
 ## Lifecycle: folders are stages
 

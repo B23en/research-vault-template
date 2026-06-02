@@ -1,6 +1,6 @@
 ---
 name: verify-consistency
-description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, and orphan notes. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, or sanity-check ideas against the agreed research direction — and whenever a new idea or approach might clash with established decisions. The daily routine reuses this same procedure.
+description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, orphan notes, and undefined or colliding codes. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, or sanity-check ideas against the agreed research direction — and whenever a new idea or approach might clash with established decisions. The daily routine reuses this same procedure.
 ---
 
 # verify-consistency
@@ -39,13 +39,19 @@ the confirmed baseline, and tentative notes against each other.
    linking each other.
 4. **Orphan** — a note has no incoming or outgoing `related` links; it is
    disconnected from the graph and likely to be forgotten.
+5. **Undefined or colliding code** — a note uses a project-coined code that has
+   no entry in `Glossary.md`, or uses one with a meaning that conflicts with its
+   Glossary entry or collides with another code's.
 
 ## Procedure
 
 1. **Read `Direction.md` in full.** This is the baseline for every comparison.
+   Also read `Glossary.md` — the registry of project-coined codes — so codes used
+   in notes can be checked against their definitions.
 2. **Read the in-scope notes** (see Scope above).
-3. **Check each note** against the four categories. Be concrete — quote the
-   exact lines that conflict, name the exact notes that duplicate.
+3. **Check each note** against the five categories. Be concrete — quote the
+   exact lines that conflict, name the exact notes that duplicate, name the codes
+   that are undefined or collide.
 4. **Write the report** to `journal/YYYY-MM-DD-verify.md` using the template
    below. (When running inside `daily-routine`, contribute this content to the
    verification section of the daily report instead of a separate file.)
@@ -76,6 +82,9 @@ the confirmed baseline, and tentative notes against each other.
 
 ## Orphans
 <!-- [[Link]] the notes that have no links in or out. -->
+
+## Undefined / colliding codes
+<!-- Each: [[link]] the note, the code, and whether it is undefined in Glossary.md or conflicts. -->
 
 ## Summary
 <!-- Counts per category, and which items were filed as proposals (prop-NNNN). -->

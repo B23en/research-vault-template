@@ -30,6 +30,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `CLAUDE.md` | Agent configuration and vault rules |
 | `Direction.md` | Research direction — the verification baseline |
 | `Memory.md` | Open questions + working context |
+| `Glossary.md` | Registry of project-coined codes and abbreviations |
 | `inbox/` | Raw fragments |
 | `ideas/` | Synthesized ideas |
 | `approaches/` | Approaches built on ideas |
