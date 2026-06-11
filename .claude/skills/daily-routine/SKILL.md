@@ -1,6 +1,6 @@
 ---
 name: daily-routine
-description: The integrated daily routine for the research vault, run automatically by the 07:00 scheduled task. Use this skill when the scheduled task fires, or when the user asks to run the daily routine, the daily check, or the daily maintenance pass manually. Its focus is verification and evaluation. It runs four steps in order — verify, evaluate, expand, concerns — plus a hygiene-and-close step, and writes a dated report to journal/. The routine never writes to the knowledge graph directly: it detects, evaluates, and proposes; only hygiene touches files.
+description: The integrated daily routine for the research vault, run automatically by a daily scheduled task if one is set up. Use this skill when the scheduled task fires, or when the user asks to run the daily routine, the daily check, or the daily maintenance pass manually. Its focus is verification and evaluation. It runs four steps in order — verify, evaluate, expand, concerns — plus a hygiene-and-close step, and writes a dated report to journal/. The routine never writes to the knowledge graph directly: it detects, evaluates, and proposes; only hygiene touches files.
 ---
 
 # daily-routine
@@ -20,8 +20,8 @@ change waits for the user's explicit approval through `proposals/`.
 
 ## When it runs
 
-Every day at 07:00 via the scheduled task (cron `0 7 * * *`). It can also be run
-manually when the user asks.
+On a daily scheduled task, if one is set up — at whatever time the user chose.
+It can also be run manually when the user asks.
 
 Note: the meta-level review — proposing *new contributions* and *revisions to
 `Direction.md`* — is deliberately **not** part of this routine. That is the

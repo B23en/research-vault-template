@@ -52,5 +52,5 @@ a plan or design. (`init-vault` is installed globally, not in the vault.)
 
 ## After creating a vault
 
-Fill in `Direction.md` with the research topic, then set up a daily scheduled
-task (07:00, cron `0 7 * * *`) that runs `daily-routine`.
+Fill in `Direction.md` with the research topic, then optionally set up a daily
+scheduled task — at a time you choose — that runs `daily-routine`.

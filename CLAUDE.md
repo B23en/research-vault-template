@@ -25,7 +25,9 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
 - `approaches/` — approaches and strategies for tackling the research, built on ideas.
 - `references/` — evidence and prior work supporting approaches, gathered by active web search.
 - `experiments/` — experiment setups, settings, and their results.
-- `problems/` — problems encountered during experiments.
+- `problems/` — problems encountered during experiments: concrete obstacles
+  tied to a specific experiment and linked to it, not the abstract unresolved
+  questions tracked in `Memory.md` `## Open Questions`.
 - `proposals/` — the agent's change-proposals awaiting human approval.
 - `archived/` — discarded or superseded notes (original filenames kept).
 - `journal/` — daily and verification reports (append-only history).
@@ -38,8 +40,10 @@ Master files at the vault root:
   is the **verification baseline**: everything in it is treated as decided.
 - `Memory.md` — three sections. `## Conventions` holds standing rules that
   apply across the vault (e.g. authoring language). `## Open Questions` holds
-  long-term unresolved questions. `## Working Context` holds short-term
-  context the agent maintains in real time.
+  long-term unresolved questions — abstract uncertainties about the research,
+  distinct from the concrete experiment-tied failures recorded as notes in
+  `problems/`. `## Working Context` holds short-term context the agent
+  maintains in real time.
 - `Glossary.md` — canonical registry of project-coined codes and abbreviations
   (experiment-variant codes, contribution labels, hypothesis IDs, route/option
   letters, custom metric names). A descriptive index, not a decision baseline:
@@ -220,7 +224,7 @@ Six working skills live in this vault's `.claude/skills/`:
   conflicts, ambiguity, duplication, and orphans.
 - `specify-methodology` — turn an approach into an experiment design backed by
   web-researched evidence.
-- `daily-routine` — the integrated daily routine; runs on the schedule.
+- `daily-routine` — the integrated daily routine; runs on a schedule or on request.
 - `review-direction` — manual meta-review: new-contribution candidates and
   direction revisions.
 
@@ -240,7 +244,9 @@ the latest version.
 
 ## Schedule
 
-One scheduled task runs `daily-routine` every day at 07:00 (cron `0 7 * * *`).
-The schedule is only a trigger; the routine's logic lives in
-`daily-routine/SKILL.md`, so the two can be changed independently. Set up the
-scheduled task after the vault folder is connected to the agent.
+`daily-routine` is built to run on a schedule, but the timing is yours to
+choose. Optionally set up a scheduled task that runs it at whatever time suits
+you; the schedule is only a trigger, and the routine's logic lives in
+`daily-routine/SKILL.md`, so the two can be changed independently. Set the task
+up after the vault folder is connected to the agent — or skip it and run the
+routine on demand.
