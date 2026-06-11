@@ -7,9 +7,10 @@ topic**. The agent records, verifies, and expands the research exploration
 process: idea fragments, synthesized ideas, approaches, supporting evidence,
 experiments, problems, and the refinement that connects them.
 
-The agent's behavior is defined by this file (always-on guidance) and by five
-skills in `.claude/skills/` (invokable procedures). Read the relevant skill's
-`SKILL.md` before performing its task.
+The agent's behavior is defined by this file (always-on guidance) and by six
+working skills plus a general-purpose `grill-me` skill in `.claude/skills/`
+(invokable procedures). Read the relevant skill's `SKILL.md` before performing
+its task.
 
 ## Vault structure (canonical definition)
 
@@ -223,10 +224,17 @@ Six working skills live in this vault's `.claude/skills/`:
 - `review-direction` — manual meta-review: new-contribution candidates and
   direction revisions.
 
-A seventh skill, `init-vault`, is **not** in the vault. It is installed globally
+One general-purpose skill also ships in `.claude/skills/`, outside the note
+pipeline:
+
+- `grill-me` — interview the user relentlessly about a plan or design,
+  resolving each branch of the decision tree, to stress-test a research
+  direction, approach, or experiment before committing to it.
+
+`init-vault` is **not** in the vault. It is installed globally
 (`~/.claude/skills/`) and bootstraps a new vault by fetching this whole
-environment — this file, the six skills above, and the master-file templates —
-from the template repository. Because the six skills are fetched from that
+environment — this file, the skills above, and the master-file templates —
+from the template repository. Because these skills are fetched from that
 repository, improving one means editing it once there; new vaults then pick up
 the latest version.
 
