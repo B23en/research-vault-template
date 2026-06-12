@@ -41,12 +41,12 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `archived/` | Discarded notes |
 | `journal/` | Daily and verification reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
-| `.claude/skills/` | Five working skills + general-purpose `grill-me` |
+| `.claude/skills/` | Six working skills + general-purpose `grill-me` |
 
 ## Skills
 
-Five working pipeline skills: `capture-idea`, `promote-notes`,
-`verify-consistency`, `specify-methodology`, `review-direction`. Plus a
+Six working skills: `capture-idea`, `promote-notes`, `verify-consistency`,
+`specify-methodology`, `explain-direction`, `review-direction`. Plus a
 general-purpose `grill-me` skill for stress-testing a plan or design.
 (`init-vault` is installed globally, not in the vault.)
 

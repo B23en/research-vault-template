@@ -7,7 +7,7 @@ topic**. The agent records, verifies, and expands the research exploration
 process: idea fragments, synthesized ideas, approaches, supporting evidence,
 experiments, problems, and the refinement that connects them.
 
-The agent's behavior is defined by this file (always-on guidance) and by five
+The agent's behavior is defined by this file (always-on guidance) and by six
 working skills plus a general-purpose `grill-me` skill in `.claude/skills/`
 (invokable procedures). Read the relevant skill's `SKILL.md` before performing
 its task.
@@ -211,7 +211,7 @@ modification — and commit locally only; do not push unless the user asks.
 
 ## Skills
 
-Five working skills live in this vault's `.claude/skills/`:
+Six working skills live in this vault's `.claude/skills/`:
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
 - `promote-notes` — explicit, batched promotion from `inbox/` to `ideas/` and
@@ -222,6 +222,8 @@ Five working skills live in this vault's `.claude/skills/`:
   references.
 - `specify-methodology` — turn an approach into an experiment design backed by
   web-researched evidence.
+- `explain-direction` — read-only: explain `Direction.md` in plain language,
+  element by element, plus an overall summary. Proposes no changes.
 - `review-direction` — manual meta-review: new-contribution candidates and
   direction revisions.
 
