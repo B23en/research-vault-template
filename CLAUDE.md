@@ -136,7 +136,8 @@ readable months later instead of forcing a hunt through old notes.
   directly). Redefining an existing code is a *change* and goes through
   `proposals/`, because downstream notes and filenames depend on the old meaning.
 - **Upkeep.** `verify-consistency` flags codes used in notes but missing from
-  the Glossary, or used in a way that conflicts with their entry.
+  the Glossary, used in a way that conflicts with their entry, or Glossary
+  entries whose defining note has been archived or removed.
 
 ## Lifecycle: folders are stages
 
