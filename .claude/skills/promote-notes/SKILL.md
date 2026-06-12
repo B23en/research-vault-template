@@ -29,8 +29,7 @@ Only two transitions are in scope:
 
 Other transitions are out of scope: `approaches/` → `experiments/` belongs to
 `specify-methodology`; direction-level changes belong to `review-direction`;
-verification and archival are handled by `verify-consistency` and
-`daily-routine`.
+verification is handled by `verify-consistency`.
 
 ## When to use
 

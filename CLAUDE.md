@@ -7,7 +7,7 @@ topic**. The agent records, verifies, and expands the research exploration
 process: idea fragments, synthesized ideas, approaches, supporting evidence,
 experiments, problems, and the refinement that connects them.
 
-The agent's behavior is defined by this file (always-on guidance) and by six
+The agent's behavior is defined by this file (always-on guidance) and by five
 working skills plus a general-purpose `grill-me` skill in `.claude/skills/`
 (invokable procedures). Read the relevant skill's `SKILL.md` before performing
 its task.
@@ -198,33 +198,30 @@ search to find prior work, and record it as `references/` notes.
 artifact — a progress summary, a visualization, an HTML export, a converted
 document — save it in `outputs/` with a descriptive filename. These are derived
 presentation artifacts, not research notes: they carry no frontmatter, follow no
-naming counter, and the verification and daily-routine procedures leave them
-alone. Only write to `outputs/` on an explicit request; research content belongs
+naming counter, and the verification procedure leaves them alone. Only write to `outputs/` on an explicit request; research content belongs
 in the pipeline folders, not here.
 
 **Git.** The whole vault is version-controlled with git. Commit at your own
 discretion once you have completed a meaningful unit of work — a captured
 fragment, an approved promotion batch, an applied proposal — using a short,
 descriptive message (e.g. `capture: gpu-memory-trick`, `promote: 3 inbox -> ideas`,
-`apply prop-0009: revise scope`). The daily routine also commits at the end of
-each run as a backstop, so this is the safety net for automatic writes. Two
-rules bound the discretion: commit only complete, consistent states — never a
-half-finished change or an unapproved modification — and commit locally only;
-do not push unless the user asks.
+`apply prop-0009: revise scope`). Two rules bound the discretion: commit only
+complete, consistent states — never a half-finished change or an unapproved
+modification — and commit locally only; do not push unless the user asks.
 
 ## Skills
 
-Six working skills live in this vault's `.claude/skills/`:
+Five working skills live in this vault's `.claude/skills/`:
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
 - `promote-notes` — explicit, batched promotion from `inbox/` to `ideas/` and
   from `ideas/` to `approaches/`; presents a candidate slate for approval before
   writing anything.
-- `verify-consistency` — check live notes against `Direction.md` and report
-  conflicts, ambiguity, duplication, and orphans.
+- `verify-consistency` — audit live notes against `Direction.md` and report
+  conflicts, ambiguity, duplication, orphans, broken links, and stale/dangling
+  references.
 - `specify-methodology` — turn an approach into an experiment design backed by
   web-researched evidence.
-- `daily-routine` — the integrated daily routine; runs on a schedule or on request.
 - `review-direction` — manual meta-review: new-contribution candidates and
   direction revisions.
 
@@ -241,12 +238,3 @@ environment — this file, the skills above, and the master-file templates —
 from the template repository. Because these skills are fetched from that
 repository, improving one means editing it once there; new vaults then pick up
 the latest version.
-
-## Schedule
-
-`daily-routine` is built to run on a schedule, but the timing is yours to
-choose. Optionally set up a scheduled task that runs it at whatever time suits
-you; the schedule is only a trigger, and the routine's logic lives in
-`daily-routine/SKILL.md`, so the two can be changed independently. Set the task
-up after the vault folder is connected to the agent — or skip it and run the
-routine on demand.

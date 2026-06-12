@@ -15,8 +15,6 @@ on guesswork, so the methodology stands on real evidence.
 ## When to use
 
 - The user points at an approach and wants it made concrete and testable.
-- As step 4 of `daily-routine`, on a mature approach that has no experiment note
-  yet.
 
 ## Input
 

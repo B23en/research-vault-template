@@ -41,16 +41,15 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `archived/` | Discarded notes |
 | `journal/` | Daily and verification reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
-| `.claude/skills/` | Six working skills + general-purpose `grill-me` |
+| `.claude/skills/` | Five working skills + general-purpose `grill-me` |
 
 ## Skills
 
-Six working pipeline skills: `capture-idea`, `promote-notes`,
-`verify-consistency`, `specify-methodology`, `daily-routine`,
-`review-direction`. Plus a general-purpose `grill-me` skill for stress-testing
-a plan or design. (`init-vault` is installed globally, not in the vault.)
+Five working pipeline skills: `capture-idea`, `promote-notes`,
+`verify-consistency`, `specify-methodology`, `review-direction`. Plus a
+general-purpose `grill-me` skill for stress-testing a plan or design.
+(`init-vault` is installed globally, not in the vault.)
 
 ## After creating a vault
 
-Fill in `Direction.md` with the research topic, then optionally set up a daily
-scheduled task — at a time you choose — that runs `daily-routine`.
+Fill in `Direction.md` with the research topic.

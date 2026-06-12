@@ -1,13 +1,13 @@
 ---
 name: review-direction
-description: Step back from individual notes and review the research at the meta level — propose new contribution candidates and revisions to the research direction. Use this skill when the user asks to review the direction, step back, look at the big picture, find new contributions, reconsider the goal or scope, or asks where the research is heading. It is invoked manually and never on a schedule. It surveys the whole vault and files its suggestions as proposals.
+description: Step back from individual notes and review the research at the meta level — propose new contribution candidates and revisions to the research direction. Use this skill when the user asks to review the direction, step back, look at the big picture, find new contributions, reconsider the goal or scope, or asks where the research is heading. It is invoked manually only. It surveys the whole vault and files its suggestions as proposals.
 ---
 
 # review-direction
 
 ## Purpose
 
-`daily-routine` works note by note. This skill works at the level of the whole
+The other skills work note by note. This skill works at the level of the whole
 research arc. It answers two meta questions:
 
 - **New contribution candidates** — given everything accumulated so far, what
@@ -16,14 +16,14 @@ research arc. It answers two meta questions:
   in `Direction.md` should change: narrow, widen, or shift?
 
 It is **manual-only by design**. Direction-level review is valuable occasionally,
-not daily — running it every day would just produce noise, so it is kept off the
-schedule and triggered only when the user wants it.
+not constantly — running it too often would just produce noise, so it is
+triggered only when the user wants it.
 
 ## When to use
 
 - The user asks for a direction review, a big-picture check, a look at new
   contributions, or a reconsideration of the goal/scope.
-- Never on a schedule.
+- Manual invocation only.
 
 ## Procedure
 

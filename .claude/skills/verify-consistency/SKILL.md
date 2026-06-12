@@ -1,6 +1,6 @@
 ---
 name: verify-consistency
-description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, orphan notes, and undefined or colliding codes. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, or sanity-check ideas against the agreed research direction — and whenever a new idea or approach might clash with established decisions. The daily routine reuses this same procedure.
+description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, orphan notes, broken wiki-links, undefined or colliding codes, and stale or dangling references. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, sanity-check ideas against the agreed research direction, or clean up stale references — and whenever a new idea or approach might clash with established decisions.
 ---
 
 # verify-consistency
@@ -24,10 +24,10 @@ the confirmed baseline, and tentative notes against each other.
 
 ## Scope
 
-- **Standalone invocation** — check every note in `ideas/`, `approaches/`,
+- **Full audit** — check every note in `ideas/`, `approaches/`,
   `experiments/`, `problems/`.
-- **Inside `daily-routine`** — focus on notes created or modified since the last
-  `journal/` entry, plus any notes they link to.
+- **Incremental** — when a quick re-check is wanted, focus on notes created or
+  modified since the last `journal/` verify report, plus any notes they link to.
 
 ## What to detect
 
@@ -42,19 +42,29 @@ the confirmed baseline, and tentative notes against each other.
 5. **Undefined or colliding code** — a note uses a project-coined code that has
    no entry in `Glossary.md`, or uses one with a meaning that conflicts with its
    Glossary entry or collides with another code's.
+6. **Broken link** — a `[[wiki-link]]` whose target note does not exist in the
+   vault. Because promotion creates new notes and `archived/` keeps original
+   filenames, a broken link usually means a typo or a note that was deleted
+   rather than archived.
+7. **Stale or dangling reference** — a `Glossary.md` entry whose defining note
+   is missing or has been moved to `archived/`; a resolved question still
+   sitting in `Memory.md` `## Open Questions`; or a `## Working Context` item
+   that is no longer valid. Report these — removing one edits a master file,
+   which is a *change*, so it goes through a proposal, not a direct edit.
 
 ## Procedure
 
 1. **Read `Direction.md` in full.** This is the baseline for every comparison.
    Also read `Glossary.md` — the registry of project-coined codes — so codes used
-   in notes can be checked against their definitions.
+   in notes can be checked against their definitions, and each Glossary entry's
+   defining note can be checked for existence. Read `Memory.md` too, so stale
+   `## Open Questions` and `## Working Context` items can be flagged.
 2. **Read the in-scope notes** (see Scope above).
-3. **Check each note** against the five categories. Be concrete — quote the
+3. **Check each note** against the seven categories. Be concrete — quote the
    exact lines that conflict, name the exact notes that duplicate, name the codes
-   that are undefined or collide.
+   that are undefined or collide, name the missing link targets.
 4. **Write the report** to `journal/YYYY-MM-DD-verify.md` using the template
-   below. (When running inside `daily-routine`, contribute this content to the
-   verification section of the daily report instead of a separate file.)
+   below.
 5. **File proposals for serious issues.** A *serious* issue is one whose
    resolution requires editing or archiving an existing note, or editing
    `Direction.md` — that is a change, not an addition, so create a proposal note
@@ -85,6 +95,13 @@ the confirmed baseline, and tentative notes against each other.
 
 ## Undefined / colliding codes
 <!-- Each: [[link]] the note, the code, and whether it is undefined in Glossary.md or conflicts. -->
+
+## Broken links
+<!-- Each: [[link]] the note, and the missing target the wiki-link points to. -->
+
+## Stale / dangling
+<!-- Glossary entries whose defining note is gone; resolved Open Questions or dead
+     Working Context items in Memory.md. Note which were filed as proposals. -->
 
 ## Summary
 <!-- Counts per category, and which items were filed as proposals (prop-NNNN). -->
