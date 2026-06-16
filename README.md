@@ -41,6 +41,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `archived/` | Discarded notes |
 | `journal/` | Daily and verification reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
+| `workspace/` | Experiment code, fetch scripts, and (git-ignored) datasets |
 | `.claude/skills/` | Six working skills + general-purpose `grill-me` |
 
 ## Skills

@@ -48,9 +48,13 @@ the confirmed baseline, and tentative notes against each other.
    rather than archived.
 7. **Stale or dangling reference** — a `Glossary.md` entry whose defining note
    is missing or has been moved to `archived/`; a resolved question still
-   sitting in `Memory.md` `## Open Questions`; or a `## Working Context` item
-   that is no longer valid. Report these — removing one edits a master file,
-   which is a *change*, so it goes through a proposal, not a direct edit.
+   sitting in `Memory.md` `## Open Questions`; a `## Working Context` item
+   that is no longer valid; or an experiment note's `datasets:` link pointing to
+   a heading absent from `workspace/datasets.md`, or its `code:` path that does
+   not exist. (The contents of `workspace/data/` are out of scope — like
+   `outputs/`, verification leaves them alone.) Report these — removing one edits
+   a master file, which is a *change*, so it goes through a proposal, not a direct
+   edit.
 
 ## Procedure
 
@@ -58,7 +62,9 @@ the confirmed baseline, and tentative notes against each other.
    Also read `Glossary.md` — the registry of project-coined codes — so codes used
    in notes can be checked against their definitions, and each Glossary entry's
    defining note can be checked for existence. Read `Memory.md` too, so stale
-   `## Open Questions` and `## Working Context` items can be flagged.
+   `## Open Questions` and `## Working Context` items can be flagged. Read
+   `workspace/datasets.md` as well, so experiment notes' `datasets:` links can be
+   checked against the registry.
 2. **Read the in-scope notes** (see Scope above).
 3. **Check each note** against the seven categories. Be concrete — quote the
    exact lines that conflict, name the exact notes that duplicate, name the codes
@@ -101,7 +107,9 @@ the confirmed baseline, and tentative notes against each other.
 
 ## Stale / dangling
 <!-- Glossary entries whose defining note is gone; resolved Open Questions or dead
-     Working Context items in Memory.md. Note which were filed as proposals. -->
+     Working Context items in Memory.md; experiment-note datasets:/code: links with
+     no matching workspace/datasets.md entry or missing code path. Note which were
+     filed as proposals. -->
 
 ## Summary
 <!-- Counts per category, and which items were filed as proposals (prop-NNNN). -->

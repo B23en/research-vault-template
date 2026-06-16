@@ -6,3 +6,8 @@ Thumbs.db
 .obsidian/graph.json
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+
+# Experiment datasets — large / redistribution-restricted, never tracked.
+# Code, fetch scripts, and workspace/datasets.md ARE tracked.
+workspace/data/**
+!workspace/data/.gitkeep

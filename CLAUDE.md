@@ -32,6 +32,10 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
 - `archived/` — discarded or superseded notes (original filenames kept).
 - `journal/` — daily and verification reports (append-only history).
 - `outputs/` — generated deliverables the user explicitly asked for: progress summaries, visualizations, HTML exports, and the like. Not part of the note pipeline.
+- `workspace/` — experiment work area: code, fetch scripts, and the datasets
+  experiments run on. Not part of the note pipeline. Large data is not
+  git-tracked; code, fetch scripts, and the `datasets.md` registry are. Datasets
+  are shared — one copy serves many experiments. See `## Workspace` below.
 
 Master files at the vault root:
 
@@ -70,7 +74,9 @@ and add 1. `journal/` does not use this scheme — its files are
 `YYYY-MM-DD-daily.md` and `YYYY-MM-DD-verify.md`. `archived/` keeps each note's
 original filename so links to it still resolve. `outputs/` files are named
 descriptively for what they are (e.g. `2026-05-23-progress-summary.md`,
-`idea-graph.html`) — no prefix, no counter.
+`idea-graph.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
+or counter — `code/` is organized as the work requires, and `datasets.md` is a
+single registry file.
 
 Short titles are lowercase, hyphen-separated, 2–5 words, English.
 
@@ -96,7 +102,10 @@ related: ["[[inbox-0007-gpu-memory-trick]]", "[[approach-0002-curriculum-schedul
 - `related` lists Obsidian wiki-links to connected notes — see the Linking
   section below.
 
-Experiment notes additionally carry `approach: "[[approach-NNNN-...]]"`.
+Experiment notes additionally carry `approach: "[[approach-NNNN-...]]"`, and —
+when they use the workspace — `datasets:` (wiki-links to entries in
+`workspace/datasets.md`, e.g. `["[[datasets#imagenet-1k]]"]`) and `code:` (the
+path to their code under `workspace/code/`).
 
 ## Linking
 
@@ -138,6 +147,32 @@ readable months later instead of forcing a hunt through old notes.
 - **Upkeep.** `verify-consistency` flags codes used in notes but missing from
   the Glossary, used in a way that conflicts with their entry, or Glossary
   entries whose defining note has been archived or removed.
+
+## Workspace (experiment code & datasets)
+
+`workspace/` is the agent's experiment work area — where a Claude Code session
+downloads datasets and where experiment code lives. Like `outputs/`, it sits
+**outside the note pipeline**: no frontmatter, no naming counter, and
+verification leaves the data alone.
+
+- `workspace/code/` — experiment code and fetch scripts. **Git-tracked.**
+- `workspace/data/` — the datasets themselves, downloaded here at run time.
+  **Not git-tracked** (only `.gitkeep` is); they are large and often
+  redistribution-restricted, so they never enter history.
+- `workspace/datasets.md` — the dataset registry. **Git-tracked.**
+
+Rules:
+
+- **Reproducibility lives in git, the bytes do not.** A fresh clone has an empty
+  `workspace/data/`. The registry plus the fetch scripts must rebuild it from
+  nothing — so the canonical form of "where this came from" is an executable
+  fetch script, not just a URL.
+- **Datasets are shared.** One copy serves many experiments. Each registry entry
+  pins a **version and checksum**; if two experiments need different versions or
+  preprocessing of the same source, each variant is a **separate entry**, so
+  sharing never silently breaks reproducibility.
+- **Scope.** Only experiment code and the data it runs on — not a scratch drawer.
+- Experiment notes link the datasets and code they use via frontmatter (below).
 
 ## Lifecycle: folders are stages
 

@@ -36,10 +36,16 @@ approach to specify before proceeding.
    compare against; the procedure; required resources; risks and their
    mitigations; and the evidence (links to the `ref-` notes) behind each design
    choice.
-4. **Create the experiment note** `experiments/exp-NNNN-short-title.md` (template
-   below). Set the `approach:` frontmatter field to the source approach, and
-   list the `ref-` notes in `related`.
-5. **Report and continue.** Tell the user the new filenames, note any open
+4. **Register datasets and code (if any).** If the design needs a dataset, add
+   or reuse an entry in `workspace/datasets.md` (source, version, checksum,
+   license, fetch command) and stub a fetch script in `workspace/code/` so the
+   data rebuilds from a clean clone. This is additive — do it directly, no
+   proposal.
+5. **Create the experiment note** `experiments/exp-NNNN-short-title.md` (template
+   below). Set the `approach:` frontmatter field to the source approach, list the
+   `ref-` notes in `related`, and set `datasets:`/`code:` for any workspace
+   artifacts it uses.
+6. **Report and continue.** Tell the user the new filenames, note any open
    design questions, and end with a question (per `CLAUDE.md`).
 
 The experiment note also holds results later, so it includes an empty
@@ -76,6 +82,8 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [experiment]
 approach: "[[approach-NNNN-...]]"
+datasets: ["[[datasets#...]]"]      # workspace/datasets.md entries it uses (omit if none)
+code: "workspace/code/exp-NNNN-.../" # its code dir under workspace/ (omit if none)
 source: "specify-methodology YYYY-MM-DD"
 related: ["[[ref-NNNN-...]]"]
 ---
