@@ -40,7 +40,10 @@ approach to specify before proceeding.
    or reuse an entry in `workspace/datasets.md` (source, version, checksum,
    license, fetch command) and stub a fetch script in `workspace/code/` so the
    data rebuilds from a clean clone. This is additive — do it directly, no
-   proposal.
+   proposal. Run outputs (checkpoints, logs, metrics) land in
+   `workspace/runs/<exp-id>/`, which is git-ignored; once a run produces a
+   checkpoint worth keeping, preserve it per policy (B) (Hugging Face Hub) and
+   record the pointer in the note's `## Results`.
 5. **Create the experiment note** `experiments/exp-NNNN-short-title.md` (template
    below). Set the `approach:` frontmatter field to the source approach, list the
    `ref-` notes in `related`, and set `datasets:`/`code:` for any workspace
@@ -113,5 +116,7 @@ related: ["[[ref-NNNN-...]]"]
 <!-- [[Wiki-link]] each ref- note, with the design choice it justifies. -->
 
 ## Results
-<!-- Empty until the experiment is run. -->
+<!-- Empty until the experiment is run. Record key metrics. For any checkpoint
+     preserved externally (policy B), record: HF repo id, revision (commit hash),
+     sha256, download command, and local path under workspace/runs/<exp-id>/. -->
 ```

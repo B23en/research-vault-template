@@ -51,7 +51,7 @@ the confirmed baseline, and tentative notes against each other.
    sitting in `Memory.md` `## Open Questions`; a `## Working Context` item
    that is no longer valid; or an experiment note's `datasets:` link pointing to
    a heading absent from `workspace/datasets.md`, or its `code:` path that does
-   not exist. (The contents of `workspace/data/` are out of scope — like
+   not exist. (The contents of `workspace/data/` and `workspace/runs/` are out of scope — like
    `outputs/`, verification leaves them alone.) Report these — removing one edits
    a master file, which is a *change*, so it goes through a proposal, not a direct
    edit.

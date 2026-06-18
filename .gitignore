@@ -11,3 +11,18 @@ Thumbs.db
 # Code, fetch scripts, and workspace/datasets.md ARE tracked.
 workspace/data/**
 !workspace/data/.gitkeep
+
+# Run outputs (checkpoints, logs, metrics) — per-experiment, never tracked.
+workspace/runs/**
+!workspace/runs/.gitkeep
+
+# Model weights — never tracked wherever they land under workspace/ (footgun guard).
+workspace/**/*.ckpt
+workspace/**/*.pt
+workspace/**/*.pth
+workspace/**/*.safetensors
+workspace/**/*.bin
+workspace/**/*.h5
+workspace/**/*.onnx
+workspace/**/*.gguf
+workspace/**/*.pkl
