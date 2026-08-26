@@ -110,10 +110,10 @@ related: ["[[inbox-0007-gpu-memory-trick]]", "[[exp-0005-batch-ablation]]"]
   section below.
 
 Experiment notes additionally carry `note: "[[note-NNNN-...]]"` — the `notes/`
-note they were specified from — and —
-when they use the workspace — `datasets:` (wiki-links to entries in
-`workspace/datasets.md`, e.g. `["[[datasets#imagenet-1k]]"]`) and `code:` (the
-path to their code under `workspace/code/`).
+note they were specified from. When they use the workspace they also carry
+`datasets:` (wiki-links to entries in `workspace/datasets.md`, e.g.
+`["[[datasets#imagenet-1k]]"]`) and `code:` (the path to their code under
+`workspace/code/`).
 
 ## Linking
 
