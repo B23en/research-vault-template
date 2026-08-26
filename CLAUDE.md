@@ -12,6 +12,13 @@ working skills plus a general-purpose `grill-me` skill in `.claude/skills/`
 (invokable procedures). Read the relevant skill's `SKILL.md` before performing
 its task.
 
+**Agent entry points.** This file is the authoritative configuration, and Claude
+Code loads it automatically. Agents that read `AGENTS.md` instead — Codex and
+others following that convention — are sent here by the root `AGENTS.md`, which
+is a pointer only and carries no rules of its own, so there is never a second
+copy of these rules to keep in sync. Whichever agent is running, this file plus
+the skills in `.claude/skills/` define the behavior.
+
 ## Vault structure (canonical definition)
 
 This section documents the canonical vault layout — the template repository
@@ -40,6 +47,9 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
 Master files at the vault root:
 
 - `CLAUDE.md` — this file. Agent configuration and vault rules.
+- `AGENTS.md` — entry point for agents that read `AGENTS.md` rather than
+  `CLAUDE.md` (Codex, and other tools following that convention). It holds no
+  rules of its own: it points at this file and requires that it be read first.
 - `Direction.md` — the overall research direction and confirmed decisions. This
   is the **verification baseline**: everything in it is treated as decided.
 - `Memory.md` — three sections. `## Conventions` holds standing rules that
@@ -268,6 +278,18 @@ complete, consistent states — never a half-finished change or an unapproved
 modification — and commit locally only; do not push unless the user asks.
 
 ## Skills
+
+Skills are this vault's procedures. Each lives at
+`.claude/skills/<skill-name>/SKILL.md`, with YAML frontmatter naming it and
+describing when it applies. The directory name is historical — it is where the
+skills live regardless of which agent is running.
+
+**Dispatch rule.** When a request matches a skill's `description`, read that
+`SKILL.md` and follow its workflow in full before implementing anything
+yourself — the whole procedure, never an abbreviated version. When no request
+matches, proceed normally; do not open a `SKILL.md` just in case, since reading
+one costs context. Skills that write to the vault still obey the operating
+principles above: additive actions are direct, changes go through `proposals/`.
 
 Six working skills live in this vault's `.claude/skills/`:
 

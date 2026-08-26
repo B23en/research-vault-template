@@ -6,9 +6,13 @@ Template for a single-topic research knowledge vault — an Obsidian vault paire
 with a Claude agent that records, verifies, and expands a research exploration
 process (ideas, approaches, evidence, experiments, problems).
 
-> **Designed for Claude.** The agent runs on Claude (via Claude Code or Cowork):
-> `CLAUDE.md` provides its always-on instructions and `.claude/skills/` holds the
-> skills it invokes. Outside a Claude environment, the files are just Markdown.
+> **Designed for Claude, portable to other agents.** The agent runs best on
+> Claude (via Claude Code or Cowork): `CLAUDE.md` provides its always-on
+> instructions and `.claude/skills/` holds the skills it invokes. Agents that
+> follow the `AGENTS.md` convention — Codex among them — read the root
+> `AGENTS.md`, a pointer that sends them to `CLAUDE.md`. It duplicates no rules,
+> so there is only ever one source of truth. Outside an agent environment, the
+> files are just Markdown.
 
 ## Using this template
 
@@ -28,6 +32,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | Path | Purpose |
 |------|---------|
 | `CLAUDE.md` | Agent configuration and vault rules |
+| `AGENTS.md` | Pointer sending `AGENTS.md`-reading agents (Codex, …) to `CLAUDE.md` |
 | `Direction.md` | Research direction — the verification baseline |
 | `Memory.md` | Open questions + working context |
 | `Glossary.md` | Registry of project-coined codes and abbreviations |
