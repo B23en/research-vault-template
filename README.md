@@ -4,7 +4,7 @@
 
 Template for a single-topic research knowledge vault — an Obsidian vault paired
 with a Claude agent that records, verifies, and expands a research exploration
-process (ideas, approaches, evidence, experiments, problems).
+process (notes, evidence, experiments and their results).
 
 > **Designed for Claude, portable to other agents.** The agent runs best on
 > Claude (via Claude Code or Cowork): `CLAUDE.md` provides its always-on
@@ -37,11 +37,9 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `Memory.md` | Open questions + working context |
 | `Glossary.md` | Registry of project-coined codes and abbreviations |
 | `inbox/` | Raw fragments |
-| `ideas/` | Synthesized ideas |
-| `approaches/` | Approaches built on ideas |
+| `notes/` | Worked-out thinking: ideas, discussion, writing |
 | `references/` | Evidence, gathered by web search |
-| `experiments/` | Experiment setups and results |
-| `problems/` | Problems found during experiments |
+| `experiments/` | Experiment setups, results, and problems hit |
 | `proposals/` | Agent change-proposals awaiting review |
 | `archived/` | Discarded notes |
 | `journal/` | Daily and verification reports |

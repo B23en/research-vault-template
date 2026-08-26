@@ -50,7 +50,7 @@ and points to where it is decided.
 ## Contributions
 
 <!-- Codes for the paper's claimed contributions. Example:
-     - **C1** — the editable object-region representation. [[approach-0001-...]] -->
+     - **C1** — the editable object-region representation. [[note-0001-...]] -->
 
 ## Hypotheses
 

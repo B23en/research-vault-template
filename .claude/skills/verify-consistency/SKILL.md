@@ -1,6 +1,6 @@
 ---
 name: verify-consistency
-description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, orphan notes, broken wiki-links, undefined or colliding codes, and stale or dangling references. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, sanity-check ideas against the agreed research direction, or clean up stale references — and whenever a new idea or approach might clash with established decisions.
+description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, orphan notes, broken wiki-links, undefined or colliding codes, and stale or dangling references. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, sanity-check ideas against the agreed research direction, or clean up stale references — and whenever a new note or experiment design might clash with established decisions.
 ---
 
 # verify-consistency
@@ -18,14 +18,13 @@ to `Direction.md` are *changes*, and changes go through `proposals/`.
 ## Baseline: confirmed vs tentative
 
 `Direction.md` is **confirmed** — treat everything in it as ground truth.
-Everything in `ideas/`, `approaches/`, `experiments/`, and `problems/` is
+Everything in `notes/` and `experiments/` is
 **tentative** — work in progress. Verification compares tentative notes against
 the confirmed baseline, and tentative notes against each other.
 
 ## Scope
 
-- **Full audit** — check every note in `ideas/`, `approaches/`,
-  `experiments/`, `problems/`.
+- **Full audit** — check every note in `notes/` and `experiments/`.
 - **Incremental** — when a quick re-check is wanted, focus on notes created or
   modified since the last `journal/` verify report, plus any notes they link to.
 

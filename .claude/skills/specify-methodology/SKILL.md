@@ -1,30 +1,30 @@
 ---
 name: specify-methodology
-description: Turn an approach note into a concrete, evidence-backed experiment design. Use this skill whenever the user wants to work out a methodology, design an experiment, figure out how to actually test or implement an approach, or asks for a concrete experimental plan or setup. It actively web-searches for prior work and evidence, records what it finds as reference notes, and produces an experiment note with a hypothesis, variables, measurements, baselines, and risks.
+description: Turn a notes/ note into a concrete, evidence-backed experiment design. Use this skill whenever the user wants to work out a methodology, design an experiment, figure out how to actually test or implement an approach, or asks for a concrete experimental plan or setup. It actively web-searches for prior work and evidence, records what it finds as reference notes, and produces an experiment note with a hypothesis, variables, measurements, baselines, and risks.
 ---
 
 # specify-methodology
 
 ## Purpose
 
-An approach says *what to try*. An experiment note says *how, concretely, and on
-what evidence*. This skill bridges the two. Its defining feature is that the
+A `notes/` note says *what to try*. An experiment note says *how, concretely,
+and on what evidence*. This skill bridges the two. Its defining feature is that the
 design is **grounded** — it actively searches for prior work rather than relying
 on guesswork, so the methodology stands on real evidence.
 
 ## When to use
 
-- The user points at an approach and wants it made concrete and testable.
+- The user points at a note and wants it made concrete and testable.
 
 ## Input
 
-An approach note in `approaches/`. If the user has not named one, ask which
-approach to specify before proceeding.
+A note in `notes/` — the worked-out idea or strategy to be tested. If the user
+has not named one, ask which note to specify before proceeding.
 
 ## Procedure
 
-1. **Read the context.** Read the approach note and follow its `related` chain
-   back to the ideas and fragments behind it. Read `Direction.md` so the design
+1. **Read the context.** Read the source note and follow its `related` chain
+   back to the fragments behind it. Read `Direction.md` so the design
    respects confirmed constraints (resources, scope, evaluation choices).
 2. **Gather evidence actively.** Web-search for prior work: has something like
    this been tried? What did they measure? What baselines are standard in this
@@ -45,14 +45,16 @@ approach to specify before proceeding.
    checkpoint worth keeping, preserve it per policy (B) (Hugging Face Hub) and
    record the pointer in the note's `## Results`.
 5. **Create the experiment note** `experiments/exp-NNNN-short-title.md` (template
-   below). Set the `approach:` frontmatter field to the source approach, list the
+   below). Set the `note:` frontmatter field to the source note, list the
    `ref-` notes in `related`, and set `datasets:`/`code:` for any workspace
    artifacts it uses.
 6. **Report and continue.** Tell the user the new filenames, note any open
    design questions, and end with a question (per `CLAUDE.md`).
 
-The experiment note also holds results later, so it includes an empty
-`## Results` section to fill in once the experiment is actually run.
+The experiment note also holds the rest of the experiment's life, so it ships
+with empty `## Results` and `## Problems` sections to fill in once the
+experiment is actually run. There is no separate problems folder — obstacles
+live in the experiment note that produced them.
 
 ## Reference note template
 
@@ -63,14 +65,14 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [prior-work]
 source: "<URL or full citation>"
-related: ["[[approach-NNNN-...]]"]
+related: ["[[note-NNNN-...]]"]
 ---
 
 ## Summary
 <!-- What this source shows or claims, in 2–4 sentences. -->
 
 ## Relevance
-<!-- Why it matters for the [[approach]] — what it supports, warns against, or measures. -->
+<!-- Why it matters for the [[note]] — what it supports, warns against, or measures. -->
 
 ## Source
 <!-- Full citation and URL. -->
@@ -84,7 +86,7 @@ id: exp-NNNN
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [experiment]
-approach: "[[approach-NNNN-...]]"
+note: "[[note-NNNN-...]]"
 datasets: ["[[datasets#...]]"]      # workspace/datasets.md entries it uses (omit if none)
 code: "workspace/code/exp-NNNN-.../" # its code dir under workspace/ (omit if none)
 source: "specify-methodology YYYY-MM-DD"
@@ -116,7 +118,15 @@ related: ["[[ref-NNNN-...]]"]
 <!-- [[Wiki-link]] each ref- note, with the design choice it justifies. -->
 
 ## Results
-<!-- Empty until the experiment is run. Record key metrics. For any checkpoint
-     preserved externally (policy B), record: HF repo id, revision (commit hash),
-     sha256, download command, and local path under workspace/runs/<exp-id>/. -->
+<!-- Empty until the experiment is run. Record key metrics and what they mean.
+     For any checkpoint preserved externally (policy B), record: HF repo id,
+     revision (commit hash), sha256, download command, and local path under
+     workspace/runs/<exp-id>/. -->
+
+## Problems
+<!-- Obstacles actually hit while running this, and cautions for anyone
+     repeating it: what broke, what was confusing, what nearly invalidated a
+     result, what to watch for next time. Distinct from ## Risks, which is
+     written before the run and lists what *could* go wrong. Empty until there
+     is something to record. -->
 ```

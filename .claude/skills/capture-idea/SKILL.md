@@ -8,8 +8,8 @@ description: Save a discussed idea fragment or piece of information into the res
 ## Purpose
 
 `inbox/` holds raw fragments — small ideas, stray information, snippets. It is
-the unprocessed material that everything downstream (ideas, approaches,
-experiments) is synthesized from. The value of this skill is speed and
+the unprocessed material that everything downstream (notes, experiments) is
+synthesized from. The value of this skill is speed and
 consistency: a fragment captured the moment it appears is a fragment that
 survives.
 
@@ -48,7 +48,7 @@ created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [topic-tag]
 source: "conversation YYYY-MM-DD"
-related: ["[[idea-0003-...]]"]
+related: ["[[note-0003-...]]"]
 ---
 
 ## Fragment
@@ -70,7 +70,7 @@ related: ["[[idea-0003-...]]"]
 
 Keep it short. `inbox/` notes are fragments, not essays — a few sentences per
 section is right. Refinement happens later when fragments are synthesized into
-an `ideas/` note.
+a `notes/` note.
 
 ## Example
 
@@ -86,7 +86,7 @@ created: 2026-05-23
 updated: 2026-05-23
 tags: [training-stability, batching]
 source: "conversation 2026-05-23"
-related: ["[[idea-0003-adaptive-batching]]"]
+related: ["[[note-0003-adaptive-batching]]"]
 ---
 
 ## Fragment
@@ -100,7 +100,7 @@ Came up while discussing instability in the first few hundred steps.
 
 ## Related
 
-Connects to [[idea-0003-adaptive-batching]] — both treat batch size as a
+Connects to [[note-0003-adaptive-batching]] — both treat batch size as a
 schedulable quantity.
 
 ## Open threads

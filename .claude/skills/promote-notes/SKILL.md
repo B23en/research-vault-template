@@ -1,6 +1,6 @@
 ---
 name: promote-notes
-description: Explicitly-invoked skill that surveys the vault for promotion candidates and, after user approval, creates new notes one stage up the pipeline. Scoped to two transitions only — inbox/ → ideas/ (synthesize fragments into an idea) and ideas/ → approaches/ (develop ideas into an approach). Use this skill when the user asks to promote, synthesize, advance, level up, or move notes forward in the pipeline. Always presents the candidate slate, groupings, and judgment for review before writing anything.
+description: Explicitly-invoked skill that surveys the vault for promotion candidates and, after user approval, creates new notes one stage up the pipeline. Scoped to one transition — inbox/ → notes/ (synthesize fragments into a worked-out note). Use this skill when the user asks to promote, synthesize, advance, level up, or move notes forward in the pipeline. Always presents the candidate slate, groupings, and judgment for review before writing anything.
 ---
 
 # promote-notes
@@ -8,26 +8,23 @@ description: Explicitly-invoked skill that surveys the vault for promotion candi
 ## Purpose
 
 Promotion is how the research moves up the pipeline: raw fragments crystallise
-into ideas, and ideas crystallise into approaches. The base agent already does
-this conversationally when material looks ready (per `CLAUDE.md`). This skill
-covers the **batched, deliberate** case — the user wants the agent to sweep the
-current state, judge what is ripe, and propose a whole slate of promotions in
-one pass.
+into worked-out notes. The base agent already does this conversationally when
+material looks ready (per `CLAUDE.md`). This skill covers the **batched,
+deliberate** case — the user wants the agent to sweep the current state, judge
+what is ripe, and propose a whole slate of promotions in one pass.
 
 Synthesis is a judgment-heavy additive action: getting it wrong produces a
-misleading idea or a half-baked approach that downstream work then builds on.
-So this skill always **presents first, writes second**. Nothing is created until
-the user approves the slate.
+misleading note that downstream work then builds on. So this skill always
+**presents first, writes second**. Nothing is created until the user approves
+the slate.
 
 ## Scope
 
-Only two transitions are in scope:
+One transition is in scope:
 
-- `inbox/` → `ideas/` — synthesise one or more fragments into an `idea-NNNN` note.
-- `ideas/` → `approaches/` — develop one or more ideas into an `approach-NNNN`
-  note that names a concrete strategy.
+- `inbox/` → `notes/` — synthesise one or more fragments into a `note-NNNN` note.
 
-Other transitions are out of scope: `approaches/` → `experiments/` belongs to
+Other transitions are out of scope: `notes/` → `experiments/` belongs to
 `specify-methodology`; direction-level changes belong to `review-direction`;
 verification is handled by `verify-consistency`.
 
@@ -35,9 +32,9 @@ verification is handled by `verify-consistency`.
 
 Explicit invocation only. Triggers: "promote", "synthesize these", "advance the
 pipeline", "level up", "what's ready to move forward", or any direct request to
-promote inbox/ideas notes. Do not invoke proactively — the base agent's
-adaptive promotion suggestion (per `CLAUDE.md`) already covers the opportunistic
-single-note case.
+promote inbox fragments. Do not invoke proactively — the base agent's adaptive
+promotion suggestion (per `CLAUDE.md`) already covers the opportunistic
+single-fragment case.
 
 ## Procedure
 
@@ -47,30 +44,24 @@ The skill has two phases. **Do not collapse them — present, wait, then write.*
 
 1. **Read the baseline.** Read `Direction.md` so judgments respect confirmed
    constraints. Skim `Memory.md` for working context and open questions.
-2. **Survey the source folders.** List `inbox/` and `ideas/` in full. Read every
-   note. For each idea note, follow `related` to see which fragments already
-   feed it, so the same fragment is not re-promoted into a second idea.
-3. **Cluster and judge.** For each transition in scope:
-   - **inbox → ideas.** Group fragments that point at the same underlying
-     thought. A cluster of two or more related fragments is a strong candidate;
-     a single fragment that is already substantial and standalone is a weaker
-     but valid candidate. Skip fragments that are still raw, off-topic against
-     `Direction.md`, or already synthesised into an existing idea.
-   - **ideas → approaches.** Identify ideas that have firmed up into something
-     a person could act on — the idea names a *mechanism*, not just a
-     phenomenon. Two or more ideas that converge on the same strategy can be
-     promoted together. Skip ideas that are still speculative, redundant with
-     an existing approach, or blocked on an open question in `Memory.md`.
+2. **Survey the source folder.** List `inbox/` in full and read every fragment.
+   Then read `notes/` and follow each note's `related` to see which fragments
+   already feed it, so the same fragment is not re-promoted into a second note.
+3. **Cluster and judge.** Group fragments that point at the same underlying
+   thought. A cluster of two or more related fragments is a strong candidate; a
+   single fragment that is already substantial and standalone is a weaker but
+   valid candidate. Skip fragments that are still raw, off-topic against
+   `Direction.md`, or already synthesised into an existing note.
 4. **Draft the slate.** For each candidate, prepare:
-   - **Target stage** (idea / approach) and **proposed title** in the standard
-     `short-title` style (lowercase, hyphen-separated, 2–5 words).
+   - **Proposed title** in the standard `short-title` style (lowercase,
+     hyphen-separated, 2–5 words).
    - **Source notes** as `[[wiki-links]]`.
    - **Synthesis preview** — 2–3 sentences describing what the new note will
      say. This is what the user is approving.
    - **Judgment** — one sentence on why this is worth promoting now.
    - **Caveats** — anything the user should know before approving: a weak link,
      a competing interpretation, a missing piece.
-5. **List deliberate exclusions.** Briefly note source items the agent
+5. **List deliberate exclusions.** Briefly note source fragments the agent
    considered but chose not to promote, with the reason. The user often wants
    to override these.
 6. **Present and stop.** Send the slate to the user as a numbered list (so they
@@ -84,24 +75,28 @@ Run this phase only after the user approves — fully, partially, or with edits.
 7. **Confirm the final set.** If the user said "do 1, 3, 5", restrict to those.
    If they renamed or reframed an item, use the updated version. If they
    rejected the whole slate, stop and report.
-8. **Allocate ids up front.** Before writing, compute the next id for each
-   target folder for the *whole batch* so multiple new notes get sequential
-   numbers without collision (per `CLAUDE.md` numbering rules: list the folder,
-   find the highest existing `NNNN`, increment per item in order).
+8. **Allocate ids up front.** Before writing, compute the next `note-NNNN` id
+   for the *whole batch* so multiple new notes get sequential numbers without
+   collision (per `CLAUDE.md` numbering rules: list the folder, find the highest
+   existing `NNNN`, increment per item in order).
 9. **Create the notes.** For each approved item, write the file using the
-   relevant template below. In the new note's `related`, link every source note
-   as `[[wiki-link]]`. **Do not modify the source notes** — promotion creates a
+   template below. In the new note's `related`, link every source fragment as
+   `[[wiki-link]]`. **Do not modify the source notes** — promotion creates a
    new note; the originals stay where they are (per `CLAUDE.md` lifecycle:
    "folders are stages", promotion is never a move or rename).
 10. **Report back.** List the new filenames, note any items the user dropped
     from the slate, and end with a question that pushes the next move — which
-    approach to specify, which idea to expand further, etc.
+    note to specify into an experiment, which one to develop further, etc.
 
-## Idea note template
+## Note template
+
+`notes/` also holds discussion and writing material that never came from a
+promotion; those are free-form. This template is for the synthesis case only —
+a note built out of `inbox/` fragments.
 
 ```markdown
 ---
-id: idea-NNNN
+id: note-NNNN
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 tags: [topic-tag]
@@ -123,32 +118,6 @@ related: ["[[inbox-XXXX-...]]", "[[inbox-YYYY-...]]"]
 <!-- [[Wiki-link]] each source fragment, one line on what it contributed. -->
 ```
 
-## Approach note template
-
-```markdown
----
-id: approach-NNNN
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-tags: [topic-tag]
-source: "promote-notes YYYY-MM-DD; developed from idea-XXXX"
-related: ["[[idea-XXXX-...]]"]
----
-
-## Approach
-<!-- The concrete strategy in 3–6 sentences. Name the mechanism — what gets
-     changed, measured, or built. -->
-
-## Ideas it builds on
-<!-- [[Wiki-link]] each source idea, one line on what it contributes. -->
-
-## Why this is actionable
-<!-- What about the source ideas has crystallised into something testable. -->
-
-## Open design questions
-<!-- What still has to be decided before this becomes an experiment. -->
-```
-
 ## Slate presentation format
 
 Use this exact shape in Phase 1 so the user can reply by number:
@@ -156,18 +125,14 @@ Use this exact shape in Phase 1 so the user can reply by number:
 ```markdown
 ## Proposed promotions (review before I write anything)
 
-### inbox → ideas
-
-1. **idea-NNNN — proposed-title**
+1. **note-NNNN — proposed-title**
    - Source: [[inbox-XXXX-...]], [[inbox-YYYY-...]]
    - Synthesis: <2–3 sentences describing what the new note will say>
    - Judgment: <one sentence on why now>
    - Caveats: <weak link / competing reading / missing piece — if any>
 
-### ideas → approaches
-
-2. **approach-NNNN — proposed-title**
-   - Source: [[idea-XXXX-...]]
+2. **note-NNNN — proposed-title**
+   - Source: [[inbox-ZZZZ-...]]
    - Synthesis: <2–3 sentences>
    - Judgment: <one sentence>
    - Caveats: <if any>

@@ -4,8 +4,8 @@
 
 This is **Research Vault** — a knowledge repository for a **single research
 topic**. The agent records, verifies, and expands the research exploration
-process: idea fragments, synthesized ideas, approaches, supporting evidence,
-experiments, problems, and the refinement that connects them.
+process: idea fragments, worked-out notes, supporting evidence, experiments
+and their results, and the refinement that connects them.
 
 The agent's behavior is defined by this file (always-on guidance) and by six
 working skills plus a general-purpose `grill-me` skill in `.claude/skills/`
@@ -28,13 +28,13 @@ against it. Keep it accurate.
 Folders — note files live here, and **a note's folder is its lifecycle stage**:
 
 - `inbox/` — raw fragments: small ideas, stray information, snippets. Unprocessed material.
-- `ideas/` — small ideas synthesized from one or more `inbox/` fragments.
-- `approaches/` — approaches and strategies for tackling the research, built on ideas.
-- `references/` — evidence and prior work supporting approaches, gathered by active web search.
-- `experiments/` — experiment setups, settings, and their results.
-- `problems/` — problems encountered during experiments: concrete obstacles
-  tied to a specific experiment and linked to it, not the abstract unresolved
-  questions tracked in `Memory.md` `## Open Questions`.
+- `notes/` — the vault's worked-out thinking: ideas synthesized from `inbox/`
+  fragments, written-up discussion and analysis, and writing-oriented material
+  such as framing, outlines, and drafts. Anything that has outgrown a raw
+  fragment but is not empirical work belongs here.
+- `references/` — evidence and prior work supporting the notes, gathered by active web search.
+- `experiments/` — the whole life of an experiment in one note: setup, settings,
+  results, interpretation, and the problems hit along the way.
 - `proposals/` — the agent's change-proposals awaiting human approval.
 - `archived/` — discarded or superseded notes (original filenames kept).
 - `journal/` — daily and verification reports (append-only history).
@@ -55,8 +55,8 @@ Master files at the vault root:
 - `Memory.md` — three sections. `## Conventions` holds standing rules that
   apply across the vault (e.g. authoring language). `## Open Questions` holds
   long-term unresolved questions — abstract uncertainties about the research,
-  distinct from the concrete experiment-tied failures recorded as notes in
-  `problems/`. `## Working Context` holds short-term context the agent
+  distinct from the concrete experiment-tied obstacles recorded in an
+  experiment note's `## Problems` section. `## Working Context` holds short-term context the agent
   maintains in real time.
 - `Glossary.md` — canonical registry of project-coined codes and abbreviations
   (experiment-variant codes, contribution labels, hypothesis IDs, route/option
@@ -72,11 +72,9 @@ zero-padded 4-digit counter that is **independent per folder**.
 | Folder | Prefix | Example |
 |--------|--------|---------|
 | `inbox/` | `inbox-` | `inbox-0007-gpu-memory-trick.md` |
-| `ideas/` | `idea-` | `idea-0003-adaptive-batching.md` |
-| `approaches/` | `approach-` | `approach-0002-curriculum-schedule.md` |
+| `notes/` | `note-` | `note-0003-adaptive-batching.md` |
 | `references/` | `ref-` | `ref-0011-vaswani-2017.md` |
 | `experiments/` | `exp-` | `exp-0005-batch-ablation.md` |
-| `problems/` | `prob-` | `prob-0004-oom-on-long-seq.md` |
 | `proposals/` | `prop-` | `prop-0009-revise-scope.md` |
 
 To get the next number for a folder, list it, find the highest existing `NNNN`,
@@ -84,7 +82,7 @@ and add 1. `journal/` does not use this scheme — its files are
 `YYYY-MM-DD-daily.md` and `YYYY-MM-DD-verify.md`. `archived/` keeps each note's
 original filename so links to it still resolve. `outputs/` files are named
 descriptively for what they are (e.g. `2026-05-23-progress-summary.md`,
-`idea-graph.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
+`concept-map.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
 or counter — `code/` is organized as the work requires, and `datasets.md` is a
 single registry file.
 
@@ -96,12 +94,12 @@ Every note starts with YAML frontmatter:
 
 ```yaml
 ---
-id: idea-0003
+id: note-0003
 created: 2026-05-23
 updated: 2026-05-23
 tags: [batching, efficiency]
 source: "conversation 2026-05-23; synthesized from inbox-0007, inbox-0009"
-related: ["[[inbox-0007-gpu-memory-trick]]", "[[approach-0002-curriculum-schedule]]"]
+related: ["[[inbox-0007-gpu-memory-trick]]", "[[exp-0005-batch-ablation]]"]
 ---
 ```
 
@@ -112,7 +110,8 @@ related: ["[[inbox-0007-gpu-memory-trick]]", "[[approach-0002-curriculum-schedul
 - `related` lists Obsidian wiki-links to connected notes — see the Linking
   section below.
 
-Experiment notes additionally carry `approach: "[[approach-NNNN-...]]"`, and —
+Experiment notes additionally carry `note: "[[note-NNNN-...]]"` — the `notes/`
+note they were specified from — and —
 when they use the workspace — `datasets:` (wiki-links to entries in
 `workspace/datasets.md`, e.g. `["[[datasets#imagenet-1k]]"]`) and `code:` (the
 path to their code under `workspace/code/`).
@@ -124,14 +123,14 @@ they are how verification traces a claim back to its source. Use Obsidian
 wiki-links — `[[note-filename-without-extension]]` — in two places:
 
 - **In note bodies.** Whenever a note's prose refers to another note — an idea
-  it builds on, a reference it cites, an approach it serves — write that mention
+  it builds on, a reference it cites, an experiment it feeds — write that mention
   as a `[[wiki-link]]`, not as plain text. A cross-reference you can click is
   worth far more than one a reader has to go search for.
 - **In frontmatter `related`.** Mirror every wiki-link used in the body into the
   `related` field, so the connection shows up in the note's metadata and in
   Obsidian's graph and backlink panels.
 
-Link by filename stem, e.g. `[[idea-0003-adaptive-batching]]`. Because promotion
+Link by filename stem, e.g. `[[note-0003-adaptive-batching]]`. Because promotion
 creates new notes instead of renaming, and `archived/` keeps original filenames,
 these links stay valid for the life of the vault.
 
@@ -213,9 +212,8 @@ pipeline is never a rename or a file move — it is the creation of a **new note
 at the higher stage that links its source notes:
 
 ```
-inbox fragments  --synthesize-->  an ideas/ note
-ideas            --develop----->  an approaches/ note
-approaches       --specify----->  an experiments/ note  (+ references/ notes)
+inbox fragments  --synthesize-->  a notes/ note
+notes            --specify----->  an experiments/ note  (+ references/ notes)
 ```
 
 Source notes stay where they are — they are the raw material. A note that is
@@ -235,7 +233,7 @@ every future consistency check is wrong, which is why it is never edited without
 an approved proposal.
 
 **Adaptive always-on behaviors.** When the conversation is about the research
-itself — ideas, approaches, experiments, problems — apply three behaviors:
+itself — ideas, notes, experiments, results — apply three behaviors:
 critically analyze (surface weaknesses, hidden assumptions, feasibility concerns
 rather than only affirming), expand (offer adjacent branches, variants,
 alternatives), and end with a question that pushes the research forward. Do not
@@ -253,7 +251,7 @@ never auto-prune it.
 
 **Promotion is conversational.** Moving the research forward a stage happens with
 the user. When material looks ready, propose it adaptively ("Shall I synthesize
-these fragments into an idea note?") rather than acting unprompted.
+these fragments into a `notes/` note?") rather than acting unprompted.
 
 **Capture.** Save a fragment to `inbox/` immediately on explicit request. When a
 meaningful fragment surfaces on its own, offer to capture it rather than
@@ -272,7 +270,7 @@ in the pipeline folders, not here.
 **Git.** The whole vault is version-controlled with git. Commit at your own
 discretion once you have completed a meaningful unit of work — a captured
 fragment, an approved promotion batch, an applied proposal — using a short,
-descriptive message (e.g. `capture: gpu-memory-trick`, `promote: 3 inbox -> ideas`,
+descriptive message (e.g. `capture: gpu-memory-trick`, `promote: 3 inbox -> notes`,
 `apply prop-0009: revise scope`). Two rules bound the discretion: commit only
 complete, consistent states — never a half-finished change or an unapproved
 modification — and commit locally only; do not push unless the user asks.
@@ -294,13 +292,12 @@ principles above: additive actions are direct, changes go through `proposals/`.
 Six working skills live in this vault's `.claude/skills/`:
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
-- `promote-notes` — explicit, batched promotion from `inbox/` to `ideas/` and
-  from `ideas/` to `approaches/`; presents a candidate slate for approval before
-  writing anything.
+- `promote-notes` — explicit, batched promotion from `inbox/` to `notes/`;
+  presents a candidate slate for approval before writing anything.
 - `verify-consistency` — audit live notes against `Direction.md` and report
   conflicts, ambiguity, duplication, orphans, broken links, and stale/dangling
   references.
-- `specify-methodology` — turn an approach into an experiment design backed by
+- `specify-methodology` — turn a `notes/` note into an experiment design backed by
   web-researched evidence.
 - `explain-direction` — read-only: explain `Direction.md` in plain language,
   element by element, plus an overall summary. Proposes no changes.
