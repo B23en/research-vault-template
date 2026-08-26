@@ -46,6 +46,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
 | `workspace/` | Experiment code, fetch scripts, (git-ignored) datasets, and run outputs/checkpoints |
 | `.claude/skills/` | Working skills + general-purpose `grill-me` |
+| `.agents/skills` | Symlink to `.claude/skills/`, so Codex discovers the same files |
 
 ## Skills
 

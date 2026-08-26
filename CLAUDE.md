@@ -303,6 +303,9 @@ section names its own proactive triggers.
 
 The skills live in this vault's `.claude/skills/`. Each one's `SKILL.md` holds
 the full description and procedure — this list is only so you know what exists.
+`.agents/skills` is a **symlink** to that same directory, so agents that
+discover skills there (Codex) find them without a second copy. Do not replace
+it with real files — one skill, one file.
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
 - `promote-notes` — batched `inbox/` → `notes/` promotion; slate approved first.
