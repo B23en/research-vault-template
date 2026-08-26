@@ -3,7 +3,7 @@
 [![Built for Claude](https://img.shields.io/badge/Built%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.com)
 
 Template for a single-topic research knowledge vault — an Obsidian vault paired
-with a Claude agent that records, verifies, and expands a research exploration
+with an AI agent that records, verifies, and expands a research exploration
 process (notes, evidence, experiments and their results).
 
 > **Designed for Claude, portable to other agents.** The agent runs best on
@@ -41,7 +41,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `references/` | Evidence, gathered by web search |
 | `experiments/` | Experiment setups, results, and problems hit |
 | `proposals/` | Agent change-proposals awaiting review |
-| `archived/` | Discarded notes |
+| `archived/` | Discarded notes and applied proposals — including the only copy of pruned master-file content |
 | `journal/` | Append-only record — verification reports, commissioned run reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
 | `workspace/` | Experiment code, fetch scripts, (git-ignored) datasets, and run outputs/checkpoints |

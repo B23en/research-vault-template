@@ -35,7 +35,10 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
 - `experiments/` — the whole life of an experiment in one note: setup, settings,
   results, interpretation, and the problems hit along the way.
 - `proposals/` — the agent's change-proposals awaiting human approval.
-- `archived/` — discarded or superseded notes (original filenames kept).
+- `archived/` — discarded or superseded notes and applied proposals, each
+  keeping its original filename so links to it still resolve. A
+  `prune-master-files` proposal archived here holds the only surviving copy of
+  what it cut from the master files — nothing in here is safe to clear out.
 - `journal/` — append-only record of what happened and when: verification
   reports, plus reports from long or wide-reaching work the user explicitly
   commissioned. Never edited after the fact. Easily confused with `outputs/` —
