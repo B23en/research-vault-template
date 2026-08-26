@@ -62,15 +62,22 @@ The skill has two phases. **Do not collapse them — present, wait, then write.*
 4. **Draft the slate.** For each candidate, prepare:
    - **Proposed title** in the standard `short-title` style (lowercase,
      hyphen-separated, 2–5 words).
-   - **Source notes** as `[[wiki-links]]`.
+   - **Sources** — one line per fragment: its `[[wiki-link]]` *and what that
+     fragment actually says*, in the fragment's own terms. A bare list of
+     filenames is not enough. The user is being asked whether these belong
+     together, and cannot judge that from names alone — most fragments were
+     captured weeks earlier and are no longer in anyone's head. Keep each line
+     faithful to the original rather than pre-arguing the merge, and say so
+     plainly when a fragment is too tangled to compress honestly.
    - **Synthesis preview** — 2–3 sentences describing what the new note will
      say. This is what the user is approving.
    - **Judgment** — one sentence on why this is worth promoting now.
    - **Caveats** — anything the user should know before approving: a weak link,
      a competing interpretation, a missing piece.
-5. **List deliberate exclusions.** Briefly note source fragments the agent
-   considered but chose not to promote, with the reason. The user often wants
-   to override these.
+5. **List deliberate exclusions.** For each source fragment the agent
+   considered but left out, give both what it says and why it was skipped —
+   "still raw" means little without a line on what the raw thing is. The user
+   often wants to override these.
 6. **Present and stop.** Send the slate to the user as a numbered list (so they
    can accept, reject, or amend by number) using the format below, and **wait**.
    Do not create any notes in this phase.
@@ -133,25 +140,30 @@ Use this exact shape in Phase 1 so the user can reply by number:
 ## Proposed promotions (review before I write anything)
 
 1. **note-NNNN — proposed-title**
-   - Source: [[inbox-XXXX-...]], [[inbox-YYYY-...]]
+   - Sources
+     - [[inbox-XXXX-...]] — <what this fragment says>
+     - [[inbox-YYYY-...]] — <what this fragment says>
    - Synthesis: <2–3 sentences describing what the new note will say>
    - Judgment: <one sentence on why now>
    - Caveats: <weak link / competing reading / missing piece — if any>
 
 2. **note-NNNN — proposed-title**
-   - Source: [[inbox-ZZZZ-...]]
+   - Sources
+     - [[inbox-ZZZZ-...]] — <what this fragment says>
    - Synthesis: <2–3 sentences>
    - Judgment: <one sentence>
    - Caveats: <if any>
 
 ## Deliberately excluded
 
-- [[note-name]] — <reason>
+- [[inbox-WWWW-...]] — <what it says> — <why it was left out>
 
 ---
 
 Reply with the numbers to promote (e.g. "1 and 3", "all", "1 but rename to X"),
-or tell me what to change.
+or tell me what to change. The one-line summaries above are my compression of
+each fragment — open any of them directly if you want to check my reading
+against the original before deciding.
 ```
 
 If the survey turns up nothing worth promoting, say so plainly instead of
