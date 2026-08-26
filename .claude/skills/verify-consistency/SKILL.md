@@ -68,7 +68,11 @@ the confirmed baseline, and tentative notes against each other.
    not exist. (The contents of `workspace/data/` and `workspace/runs/` are out of scope — like
    `outputs/`, verification leaves them alone.) Report these — removing one edits
    a master file, which is a *change*, so it goes through a proposal, not a direct
-   edit.
+   edit. File that proposal for the `Glossary.md` and `datasets:`/`code:` cases.
+   The two `Memory.md` cases stay in scope to *detect* but not to act on —
+   pruning the master files belongs to `prune-master-files`. Report them, name
+   that skill as the fix, and offer to run it, rather than filing a proposal here
+   that would compete with the one it writes.
 
 ## Procedure
 
@@ -89,7 +93,9 @@ the confirmed baseline, and tentative notes against each other.
    resolution requires editing or archiving an existing note, or editing
    `Direction.md` — that is a change, not an addition, so create a proposal note
    in `proposals/` (template below). Minor issues (orphans, light ambiguity that
-   the user can fix in passing) stay in the report only.
+   the user can fix in passing) stay in the report only. Stale `Memory.md` items
+   are the exception — hand those to `prune-master-files` instead of filing here
+   (see category 7).
 6. **Never edit notes or `Direction.md` directly.** Detection and reporting
    only.
 
@@ -123,7 +129,7 @@ the confirmed baseline, and tentative notes against each other.
 <!-- Glossary entries whose defining note is gone; resolved Open Questions or dead
      Working Context items in Memory.md; experiment-note datasets:/code: links with
      no matching workspace/datasets.md entry or missing code path. Note which were
-     filed as proposals. -->
+     filed as proposals, and which were handed to prune-master-files. -->
 
 ## Summary
 <!-- Counts per category, and which items were filed as proposals (prop-NNNN). -->

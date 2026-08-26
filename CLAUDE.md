@@ -320,6 +320,9 @@ The working skills live in this vault's `.claude/skills/`:
   references.
 - `specify-methodology` — turn a `notes/` note into an experiment design backed by
   web-researched evidence.
+- `prune-master-files` — remove resolved, superseded, and abandoned material
+  from `Direction.md` and `Memory.md`, preserving it as an approved proposal in
+  `archived/`. Removals only — it never rewords what survives.
 - `review-direction` — manual meta-review of new-contribution candidates and
   direction revisions. The one skill that stays explicit-only — direction-level
   review is valuable occasionally, not constantly.
