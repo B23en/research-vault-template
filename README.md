@@ -45,14 +45,19 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `journal/` | Daily and verification reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
 | `workspace/` | Experiment code, fetch scripts, (git-ignored) datasets, and run outputs/checkpoints |
-| `.claude/skills/` | Six working skills + general-purpose `grill-me` |
+| `.claude/skills/` | Working skills + general-purpose `grill-me` |
 
 ## Skills
 
-Six working skills: `capture-idea`, `promote-notes`, `verify-consistency`,
-`specify-methodology`, `explain-direction`, `review-direction`. Plus a
-general-purpose `grill-me` skill for stress-testing a plan or design.
-(`init-vault` is installed globally, not in the vault.)
+Working skills: `capture-idea`, `promote-notes`, `verify-consistency`,
+`specify-methodology`, `review-direction`. Plus a general-purpose `grill-me`
+skill for stress-testing a plan or design. (`init-vault` is installed globally,
+not in the vault.)
+
+Skills are not slash commands you have to remember. Each one's `description` is
+what the agent routes on, so it offers the right skill when the conversation
+reaches the moment that skill covers — you can just talk. `review-direction` is
+the exception and stays explicit-only.
 
 ## After creating a vault
 

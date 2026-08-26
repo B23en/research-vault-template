@@ -1,6 +1,6 @@
 ---
 name: specify-methodology
-description: Turn a notes/ note into a concrete, evidence-backed experiment design. Use this skill whenever the user wants to work out a methodology, design an experiment, figure out how to actually test or implement an approach, or asks for a concrete experimental plan or setup. It actively web-searches for prior work and evidence, records what it finds as reference notes, and produces an experiment note with a hypothesis, variables, measurements, baselines, and risks.
+description: Turns a notes/ note into a concrete, evidence-backed experiment design. Use whenever the user wants to work out a methodology, design an experiment, or figure out how to actually test an idea — including plain openers like "let's design the experiment" or "how would we test this" — and offer it proactively when a notes/ note has firmed up into something testable, when discussion turns from what to try toward how to measure it, or when the user starts asking about baselines, metrics, or setup. It actively web-searches for prior work, records it as reference notes, and produces an experiment note with hypothesis, variables, measurements, baselines, and risks.
 ---
 
 # specify-methodology
@@ -14,7 +14,16 @@ on guesswork, so the methodology stands on real evidence.
 
 ## When to use
 
-- The user points at a note and wants it made concrete and testable.
+- **Explicit** — the user asks to design an experiment, work out a methodology,
+  or figure out how to test something. Plain openers count — "let's design the
+  experiment now", "how would we actually test this", "what's the setup?"
+- **Proactive** — reach for it unasked when a `notes/` note has firmed up into
+  something testable, when the discussion turns from *what to try* toward *how
+  to measure it*, or when the user starts asking about baselines, metrics, or
+  required resources.
+
+Proactive means **offer in one line and wait**, not start. This skill runs web
+searches and creates several notes, so it never runs unprompted.
 
 ## Input
 

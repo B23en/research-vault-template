@@ -7,10 +7,9 @@ topic**. The agent records, verifies, and expands the research exploration
 process: idea fragments, worked-out notes, supporting evidence, experiments
 and their results, and the refinement that connects them.
 
-The agent's behavior is defined by this file (always-on guidance) and by six
-working skills plus a general-purpose `grill-me` skill in `.claude/skills/`
-(invokable procedures). Read the relevant skill's `SKILL.md` before performing
-its task.
+The agent's behavior is defined by this file (always-on guidance) and by the
+skills in `.claude/skills/` — invokable procedures, listed under `## Skills`
+below. Read the relevant skill's `SKILL.md` before performing its task.
 
 **Agent entry points.** This file is the authoritative configuration, and Claude
 Code loads it automatically. Agents that read `AGENTS.md` instead — Codex and
@@ -289,20 +288,41 @@ matches, proceed normally; do not open a `SKILL.md` just in case, since reading
 one costs context. Skills that write to the vault still obey the operating
 principles above: additive actions are direct, changes go through `proposals/`.
 
-Six working skills live in this vault's `.claude/skills/`:
+**Suggest; do not wait to be summoned.** Every skill here can be invoked
+implicitly. The agent sees each skill's `name` and `description` at all times
+and is expected to reach for one when the conversation arrives at the moment
+that skill covers — not only when the user names it. The skills store the
+process; judging when the process applies is the agent's job.
+
+**But suggest; do not spring.** Reaching for a skill unasked means *offering*
+it in one line and continuing — "`inbox/` has four fragments circling the same
+thought; shall I synthesize them?" — never silently launching a vault-wide
+sweep. The bar scales with what the skill costs:
+
+- **Cheap and additive** (`capture-idea`) — offer, and act the moment the user
+  agrees. A one-line confirmation is enough.
+- **Expensive or judgment-heavy** (`promote-notes`, `verify-consistency`,
+  `specify-methodology`, `review-direction`) — offer first and wait. These read
+  large parts of the vault and produce notes the rest of the research builds
+  on, so they never start unprompted.
+
+An offer the user declines or ignores is dropped — do not re-offer the same
+skill for the same material in the same session. Each skill's `## When to use`
+section names its own proactive triggers.
+
+The working skills live in this vault's `.claude/skills/`:
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
-- `promote-notes` — explicit, batched promotion from `inbox/` to `notes/`;
-  presents a candidate slate for approval before writing anything.
+- `promote-notes` — batched promotion from `inbox/` to `notes/`; presents a
+  candidate slate for approval before writing anything.
 - `verify-consistency` — audit live notes against `Direction.md` and report
   conflicts, ambiguity, duplication, orphans, broken links, and stale/dangling
   references.
 - `specify-methodology` — turn a `notes/` note into an experiment design backed by
   web-researched evidence.
-- `explain-direction` — read-only: explain `Direction.md` in plain language,
-  element by element, plus an overall summary. Proposes no changes.
-- `review-direction` — manual meta-review: new-contribution candidates and
-  direction revisions.
+- `review-direction` — manual meta-review of new-contribution candidates and
+  direction revisions. The one skill that stays explicit-only — direction-level
+  review is valuable occasionally, not constantly.
 
 One general-purpose skill also ships in `.claude/skills/`, outside the note
 pipeline:

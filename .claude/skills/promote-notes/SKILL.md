@@ -1,6 +1,6 @@
 ---
 name: promote-notes
-description: Explicitly-invoked skill that surveys the vault for promotion candidates and, after user approval, creates new notes one stage up the pipeline. Scoped to one transition — inbox/ → notes/ (synthesize fragments into a worked-out note). Use this skill when the user asks to promote, synthesize, advance, level up, or move notes forward in the pipeline. Always presents the candidate slate, groupings, and judgment for review before writing anything.
+description: Surveys inbox/ for fragments ripe for synthesis and, after user approval, creates notes/ notes one stage up the pipeline. Scoped to one transition — inbox/ → notes/. Use when the user asks to promote, synthesize, advance, level up, or move notes forward — and offer it proactively when several inbox/ fragments have accumulated around the same thought, when the user keeps returning to a topic or says it feels settled, or when a research discussion has just produced a batch of fragments. Always presents the candidate slate for review before writing anything.
 ---
 
 # promote-notes
@@ -30,11 +30,18 @@ verification is handled by `verify-consistency`.
 
 ## When to use
 
-Explicit invocation only. Triggers: "promote", "synthesize these", "advance the
-pipeline", "level up", "what's ready to move forward", or any direct request to
-promote inbox fragments. Do not invoke proactively — the base agent's adaptive
-promotion suggestion (per `CLAUDE.md`) already covers the opportunistic
-single-fragment case.
+- **Explicit** — the user says "promote", "synthesize these", "advance the
+  pipeline", "level up", "what's ready to move forward", or otherwise asks to
+  move fragments forward. Run it.
+- **Proactive** — reach for it unasked when the vault arrives at the moment.
+  Signals worth acting on are several `inbox/` fragments accumulating around
+  the same thought, the user circling back to a topic or calling it settled,
+  and a research discussion that has just produced a batch of fragments.
+
+Proactive means **offer in one line and wait**, not start. Phase 1 reads the
+whole of `inbox/` and `notes/`, so it never runs unprompted. An offer the user
+declines or ignores is dropped — do not re-offer for the same fragments in the
+same session.
 
 ## Procedure
 

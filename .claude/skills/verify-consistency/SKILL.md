@@ -1,6 +1,6 @@
 ---
 name: verify-consistency
-description: Check the research vault's live notes for consistency against Direction.md and flag conflicts, ambiguity, duplication, orphan notes, broken wiki-links, undefined or colliding codes, and stale or dangling references. Use this skill whenever the user asks to verify, check consistency, audit the vault, find contradictions, sanity-check ideas against the agreed research direction, or clean up stale references — and whenever a new note or experiment design might clash with established decisions.
+description: Audits the vault's live notes against Direction.md and reports conflicts, ambiguity, duplication, orphan notes, broken wiki-links, undefined or colliding codes, and stale or dangling references. Use when the user asks to verify, check consistency, audit the vault, find contradictions, or clean up stale references — and offer it proactively when a new note or experiment design looks like it may clash with a confirmed decision, after a batch of notes has just been created, when Direction.md itself has just changed, or when the user is about to build on material that has not been checked in a while. It detects and reports only — fixes go through proposals/.
 ---
 
 # verify-consistency
@@ -14,6 +14,21 @@ so they can be resolved before they compound.
 
 This skill **detects and reports** — it does not fix. Fixes to existing notes or
 to `Direction.md` are *changes*, and changes go through `proposals/`.
+
+## When to use
+
+- **Explicit** — the user asks to verify, check consistency, audit the vault,
+  find contradictions, or clean up stale references. Run it.
+- **Proactive** — reach for it unasked when a new note or experiment design
+  looks like it may clash with a confirmed decision in `Direction.md`; right
+  after a batch of notes has been created; when `Direction.md` itself has just
+  changed; or when the user is about to build on material that has not been
+  checked in a while.
+
+Proactive means **offer in one line and wait**, not start. A full audit reads
+every live note, so it never runs unprompted. Name the specific worry when
+offering — "this may cut against the scope line in `Direction.md`; want me to
+run a check?" beats a generic offer to audit.
 
 ## Baseline: confirmed vs tentative
 
