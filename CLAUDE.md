@@ -162,51 +162,31 @@ readable months later instead of forcing a hunt through old notes.
 
 ## Workspace (experiment code, datasets & run outputs)
 
-`workspace/` is the agent's experiment work area — where a Claude Code session
-downloads datasets, runs experiment code, and writes run outputs. Like
-`outputs/`, it sits **outside the note pipeline**: no frontmatter, no naming
-counter, and verification leaves its data and run outputs alone.
+`workspace/` is the experiment work area — experiment code, the data it runs
+on, and the outputs it produces, and nothing else. Like `outputs/`, it sits
+**outside the note pipeline**: no frontmatter, no naming counter, and
+verification leaves its data and run outputs alone.
 
 - `workspace/code/` — experiment code and fetch scripts. **Git-tracked.**
-- `workspace/data/` — input datasets, downloaded here at run time. Shared across
-  experiments. **Not git-tracked** (only `.gitkeep` is); large and often
-  redistribution-restricted, so they never enter history.
-- `workspace/runs/` — run outputs: checkpoints, logs, metrics. Organized
-  **per-experiment** (`runs/<exp-id>/`). **Not git-tracked** — large binaries
-  that belong to a single run.
+- `workspace/data/` — input datasets, shared across experiments. **Not tracked.**
+- `workspace/runs/<exp-id>/` — one run's checkpoints, logs, metrics. **Not tracked.**
 - `workspace/datasets.md` — the dataset registry. **Git-tracked.**
 
-Rules:
+Three rules are non-negotiable, because breaking them cannot be undone:
 
 - **Reproducibility lives in git, the bytes do not.** A fresh clone has empty
-  `workspace/data/` and `workspace/runs/`. What git holds is the *recipe* — the
-  fetch scripts, the experiment code, the registry, and pointers — never the
-  heavy bytes. The canonical form of "where this came from" is an executable
-  fetch script, not just a URL.
-- **Datasets are shared; run outputs are per-experiment.** One dataset copy
-  serves many experiments — each registry entry pins a **version and checksum**;
-  a different version or preprocessing is a **separate entry**, so sharing never
-  silently breaks reproducibility. Checkpoints and logs instead belong to the
-  single run that produced them, under `runs/<exp-id>/`.
-- **Checkpoint preservation — two policies.**
-  - **(A) Regenerate by default.** Mid-training / throwaway checkpoints are not
-    preserved: they stay local and git-ignored, and the note records only the
-    recipe (config, seed, code commit) so the run can be re-done. Use when
-    re-running is cheap.
-  - **(B) Preserve precious checkpoints to Hugging Face Hub.** A final/best
-    checkpoint that is expensive or impossible to reproduce is uploaded to an HF
-    **model repo**, and only a *pointer* is kept in the vault — the experiment
-    note's `## Results` records the **repo id**, the **revision (commit hash)**,
-    a **sha256**, the **download command**, and the local path under
-    `runs/<exp-id>/`. Use when losing the file costs more than a quick re-run.
-  - Rule of thumb: recovery > ~1 hour (or irreproducible) → (B); else (A). A
-    typical experiment uses both.
-- **Secrets never enter git.** The Hugging Face token is read from the
-  `HF_TOKEN` environment variable — never written into a note, script, or commit.
-- **Scope.** Only experiment code, the data it runs on, and the outputs it
-  produces — not a scratch drawer.
-- Experiment notes link the datasets and code they use via frontmatter (below);
-  preserved (B) checkpoints are recorded in the note's `## Results`.
+  `data/` and `runs/`. Git holds the *recipe* — fetch scripts, experiment code,
+  the registry, pointers — never the heavy bytes, and "where this came from"
+  means an executable fetch script, not just a URL.
+- **Secrets never enter git.** The Hugging Face token is read from `HF_TOKEN` in
+  the environment — never written into a note, a script, or a commit.
+- **Precious checkpoints are preserved, cheap ones regenerated.** If recovering
+  a checkpoint would take more than about an hour, or is impossible, upload it
+  and keep only a pointer in the vault; otherwise let it be re-made from the
+  recipe.
+
+`specify-methodology` carries the operational detail — how a registry entry is
+pinned, and exactly what a preserved checkpoint records.
 
 ## Lifecycle: folders are stages
 

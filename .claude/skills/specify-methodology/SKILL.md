@@ -46,13 +46,10 @@ has not named one, ask which note to specify before proceeding.
    mitigations; and the evidence (links to the `ref-` notes) behind each design
    choice.
 4. **Register datasets and code (if any).** If the design needs a dataset, add
-   or reuse an entry in `workspace/datasets.md` (source, version, checksum,
-   license, fetch command) and stub a fetch script in `workspace/code/` so the
-   data rebuilds from a clean clone. This is additive — do it directly, no
-   proposal. Run outputs (checkpoints, logs, metrics) land in
-   `workspace/runs/<exp-id>/`, which is git-ignored; once a run produces a
-   checkpoint worth keeping, preserve it per policy (B) (Hugging Face Hub) and
-   record the pointer in the note's `## Results`.
+   or reuse an entry in `workspace/datasets.md` and stub a fetch script in
+   `workspace/code/` so the data rebuilds from a clean clone. This is additive —
+   do it directly, no proposal. Run outputs land in `workspace/runs/<exp-id>/`,
+   which is git-ignored. `## Workspace detail` below has the rules for both.
 5. **Create the experiment note** `experiments/exp-NNNN-short-title.md` (template
    below). Set the `note:` frontmatter field to the source note, list the
    `ref-` notes in `related`, and set `datasets:`/`code:` for any workspace
@@ -64,6 +61,34 @@ The experiment note also holds the rest of the experiment's life, so it ships
 with empty `## Results` and `## Problems` sections to fill in once the
 experiment is actually run. There is no separate problems folder — obstacles
 live in the experiment note that produced them.
+
+## Workspace detail
+
+`CLAUDE.md` `## Workspace` states the three rules that must hold in every
+session. The operational detail lives here instead, where it is actually used.
+
+**Pinning a dataset entry.** Each entry in `workspace/datasets.md` records the
+source (URL or DOI), the version or fetch date, a checksum, the license, the
+fetch command or script, and the local path. **A different version, or
+different preprocessing, is a separate entry — never an edit to an existing
+one.** One dataset copy serves many experiments, so quietly mutating an entry
+breaks reproducibility for every experiment that already cited it.
+
+**Checkpoint preservation — two policies.** A typical experiment uses both.
+
+- **(A) Regenerate.** Mid-training and throwaway checkpoints are not preserved.
+  They stay local and git-ignored, and the note records only the recipe —
+  config, seed, code commit — so the run can be re-done. Use when re-running is
+  cheap.
+- **(B) Preserve to Hugging Face Hub.** A final or best checkpoint that is
+  expensive or impossible to reproduce is uploaded to an HF **model repo**, and
+  only a *pointer* is kept in the vault. The experiment note's `## Results`
+  records the **repo id**, the **revision (commit hash)**, a **sha256**, the
+  **download command**, and the local path under `runs/<exp-id>/`. Use when
+  losing the file costs more than a quick re-run.
+
+The upload token comes from the `HF_TOKEN` environment variable. It is never
+written into a note, a script, or a commit.
 
 ## Reference note template
 
