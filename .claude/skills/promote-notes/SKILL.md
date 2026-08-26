@@ -8,8 +8,9 @@ description: Surveys inbox/ for fragments ripe for synthesis and, after user app
 ## Purpose
 
 Promotion is how the research moves up the pipeline: raw fragments crystallise
-into worked-out notes. The base agent already does this conversationally when
-material looks ready (per `CLAUDE.md`). This skill covers the **batched,
+into worked-out notes. The base agent already offers this conversationally when
+material looks ready (per the suggest-don't-spring rule in `CLAUDE.md`
+`## Skills`). This skill covers the **batched,
 deliberate** case — the user wants the agent to sweep the current state, judge
 what is ripe, and propose a whole slate of promotions in one pass.
 

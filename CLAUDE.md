@@ -232,23 +232,18 @@ invalid or is promoted into a permanent note, remove it immediately. The
 norms, naming overrides); add to it only on explicit user instruction and
 never auto-prune it.
 
-**Promotion is conversational.** Moving the research forward a stage happens with
-the user. When material looks ready, propose it adaptively ("Shall I synthesize
-these fragments into a `notes/` note?") rather than acting unprompted.
-
-**Capture.** Save a fragment to `inbox/` immediately on explicit request. When a
-meaningful fragment surfaces on its own, offer to capture it rather than
-capturing silently — this keeps `inbox/` from flooding.
-
 **Evidence.** Ground claims about feasibility and prior work. Use active web
 search to find prior work, and record it as `references/` notes.
 
-**User-requested deliverables.** When the user explicitly asks for a generated
-artifact — a progress summary, a visualization, an HTML export, a converted
-document — save it in `outputs/` with a descriptive filename. These are derived
-presentation artifacts, not research notes: they carry no frontmatter, follow no
-naming counter, and the verification procedure leaves them alone. Only write to `outputs/` on an explicit request; research content belongs
-in the pipeline folders, not here.
+**Deliverables and records.** Two folders exist only on explicit request, and
+they are the easiest pair in the vault to confuse. `outputs/` holds generated
+artifacts — a progress summary, a visualization, an HTML export — named
+descriptively, carrying no frontmatter, and left alone by verification; it
+answers *what the research looks like now*, and is regenerated freely.
+`journal/` answers *what happened, when*, and is never regenerated. If
+re-running the same work next month would leave you wanting both copies, it
+belongs in `journal/`. Research content belongs in neither — it goes in the
+pipeline folders.
 
 **Run reports.** `journal/` is the append-only record of what happened and when.
 Write an entry there when three things hold — the user explicitly commissioned
@@ -262,12 +257,6 @@ regime — but do `[[wiki-link]]` the notes it touched in the body so it can be
 traced later. Cover five things: what was commissioned, what was done, what
 changed, the outcome, and what was left undone. Never edit a past entry — if it
 turned out wrong, write a new one.
-
-`outputs/` and `journal/` are easy to confuse, since both exist only on explicit
-request. `outputs/` answers *what the research looks like now* and is
-regenerated freely; `journal/` answers *what happened, when* and is never
-regenerated. If re-running the same work next month would leave you wanting both
-copies, it belongs in `journal/`.
 
 **Git.** The whole vault is version-controlled with git. Commit at your own
 discretion once you have completed a meaningful unit of work — a captured
