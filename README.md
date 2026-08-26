@@ -42,7 +42,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `experiments/` | Experiment setups, results, and problems hit |
 | `proposals/` | Agent change-proposals awaiting review |
 | `archived/` | Discarded notes |
-| `journal/` | Daily and verification reports |
+| `journal/` | Append-only record — verification reports, commissioned run reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
 | `workspace/` | Experiment code, fetch scripts, (git-ignored) datasets, and run outputs/checkpoints |
 | `.claude/skills/` | Working skills + general-purpose `grill-me` |

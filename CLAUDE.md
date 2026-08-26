@@ -36,7 +36,10 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
   results, interpretation, and the problems hit along the way.
 - `proposals/` — the agent's change-proposals awaiting human approval.
 - `archived/` — discarded or superseded notes (original filenames kept).
-- `journal/` — daily and verification reports (append-only history).
+- `journal/` — append-only record of what happened and when: verification
+  reports, plus reports from long or wide-reaching work the user explicitly
+  commissioned. Never edited after the fact. Easily confused with `outputs/` —
+  the two are told apart under `## Operating principles`.
 - `outputs/` — generated deliverables the user explicitly asked for: progress summaries, visualizations, HTML exports, and the like. Not part of the note pipeline.
 - `workspace/` — experiment work area: code, fetch scripts, and the datasets
   experiments run on. Not part of the note pipeline. Large data is not
@@ -78,8 +81,9 @@ zero-padded 4-digit counter that is **independent per folder**.
 
 To get the next number for a folder, list it, find the highest existing `NNNN`,
 and add 1. `journal/` does not use this scheme — its files are
-`YYYY-MM-DD-daily.md` and `YYYY-MM-DD-verify.md`. `archived/` keeps each note's
-original filename so links to it still resolve. `outputs/` files are named
+`YYYY-MM-DD-<slug>.md`, where the slug names the work (`2026-05-23-verify.md`,
+`2026-05-23-glossary-migration.md`); a same-day collision takes a `-2` suffix.
+`archived/` keeps each note's original filename so links to it still resolve. `outputs/` files are named
 descriptively for what they are (e.g. `2026-05-23-progress-summary.md`,
 `concept-map.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
 or counter — `code/` is organized as the work requires, and `datasets.md` is a
@@ -265,6 +269,25 @@ document — save it in `outputs/` with a descriptive filename. These are derive
 presentation artifacts, not research notes: they carry no frontmatter, follow no
 naming counter, and the verification procedure leaves them alone. Only write to `outputs/` on an explicit request; research content belongs
 in the pipeline folders, not here.
+
+**Run reports.** `journal/` is the append-only record of what happened and when.
+Write an entry there when three things hold — the user explicitly commissioned
+the work, it ran long or changed the vault widely, and nothing else already
+records it durably. Ad-hoc migrations, bulk cleanups, and research sweeps are
+the usual case, because no skill owns them. Work that leaves its own record does
+not get a second one: a `verify-consistency` report *is* its journal entry, and
+a `prune-master-files` run is recorded by its proposal in `archived/`. Give the
+entry no frontmatter — `journal/` sits outside the note-naming and linking
+regime — but do `[[wiki-link]]` the notes it touched in the body so it can be
+traced later. Cover five things: what was commissioned, what was done, what
+changed, the outcome, and what was left undone. Never edit a past entry — if it
+turned out wrong, write a new one.
+
+`outputs/` and `journal/` are easy to confuse, since both exist only on explicit
+request. `outputs/` answers *what the research looks like now* and is
+regenerated freely; `journal/` answers *what happened, when* and is never
+regenerated. If re-running the same work next month would leave you wanting both
+copies, it belongs in `journal/`.
 
 **Git.** The whole vault is version-controlled with git. Commit at your own
 discretion once you have completed a meaningful unit of work — a captured
