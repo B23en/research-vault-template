@@ -45,7 +45,6 @@ Writing to `inbox/` is additive, so it needs no proposal — once the user agree
 ---
 id: inbox-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [topic-tag]
 source: "conversation YYYY-MM-DD"
 related: ["[[note-0003-...]]"]
@@ -58,10 +57,6 @@ related: ["[[note-0003-...]]"]
 ## Context
 
 <!-- Where it came from and what prompted it. -->
-
-## Related
-
-<!-- Notes this connects to, written as [[wiki-links]]. Mirror them in the `related` field. -->
 
 ## Open threads
 
@@ -83,7 +78,6 @@ the learning rate? Could stabilize early training."
 ---
 id: inbox-0012
 created: 2026-05-23
-updated: 2026-05-23
 tags: [training-stability, batching]
 source: "conversation 2026-05-23"
 related: ["[[note-0003-adaptive-batching]]"]
@@ -96,11 +90,8 @@ learning rate, to stabilize the initial steps.
 
 ## Context
 
-Came up while discussing instability in the first few hundred steps.
-
-## Related
-
-Connects to [[note-0003-adaptive-batching]] — both treat batch size as a
+Came up while discussing instability in the first few hundred steps. Connects
+to [[note-0003-adaptive-batching]], which also treats batch size as a
 schedulable quantity.
 
 ## Open threads

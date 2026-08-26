@@ -143,7 +143,6 @@ When a serious issue needs a change, create `proposals/prop-NNNN-short-title.md`
 ---
 id: prop-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [proposal, consistency]
 source: "verify-consistency YYYY-MM-DD"
 related: ["[[affected-note]]"]

@@ -113,7 +113,6 @@ a note built out of `inbox/` fragments.
 ---
 id: note-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [topic-tag]
 source: "promote-notes YYYY-MM-DD; synthesized from inbox-XXXX, inbox-YYYY"
 related: ["[[inbox-XXXX-...]]", "[[inbox-YYYY-...]]"]

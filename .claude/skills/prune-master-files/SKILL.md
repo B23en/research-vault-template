@@ -117,7 +117,6 @@ the full text rather than a line reference.
 ---
 id: prop-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [proposal, prune]
 source: "prune-master-files YYYY-MM-DD"
 related: ["[[evidence-note]]"]

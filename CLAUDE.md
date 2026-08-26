@@ -102,7 +102,6 @@ Every note starts with YAML frontmatter:
 ---
 id: note-0003
 created: 2026-05-23
-updated: 2026-05-23
 tags: [batching, efficiency]
 source: "conversation 2026-05-23; synthesized from inbox-0007, inbox-0009"
 related: ["[[inbox-0007-gpu-memory-trick]]", "[[exp-0005-batch-ablation]]"]
@@ -110,7 +109,10 @@ related: ["[[inbox-0007-gpu-memory-trick]]", "[[exp-0005-batch-ablation]]"]
 ```
 
 - `id` matches the filename's prefix and number.
-- `created` / `updated` are ISO dates (`updated` changes on every edit).
+- `created` is an ISO date, written once and never touched again. There is
+  deliberately no `updated` field — git already records when a note changed,
+  and a hand-maintained one goes stale the first time someone forgets it,
+  which is worse than not having it.
 - `source` records where the note came from — which fragments, which
   conversation, which reference.
 - `related` lists Obsidian wiki-links to connected notes — see the Linking

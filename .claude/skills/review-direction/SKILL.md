@@ -52,7 +52,6 @@ triggered only when the user wants it.
 ---
 id: prop-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [proposal, direction]
 source: "review-direction YYYY-MM-DD"
 related: ["[[supporting-note]]"]

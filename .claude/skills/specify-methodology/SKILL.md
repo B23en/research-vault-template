@@ -96,7 +96,6 @@ written into a note, a script, or a commit.
 ---
 id: ref-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [prior-work]
 source: "<URL or full citation>"
 related: ["[[note-NNNN-...]]"]
@@ -118,7 +117,6 @@ related: ["[[note-NNNN-...]]"]
 ---
 id: exp-NNNN
 created: YYYY-MM-DD
-updated: YYYY-MM-DD
 tags: [experiment]
 note: "[[note-NNNN-...]]"
 datasets: ["[[datasets#...]]"]      # workspace/datasets.md entries it uses (omit if none)
