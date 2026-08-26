@@ -270,8 +270,7 @@ modification — and commit locally only; do not push unless the user asks.
 
 Skills are this vault's procedures. Each lives at
 `.claude/skills/<skill-name>/SKILL.md`, with YAML frontmatter naming it and
-describing when it applies. The directory name is historical — it is where the
-skills live regardless of which agent is running.
+describing when it applies.
 
 **Dispatch rule.** When a request matches a skill's `description`, read that
 `SKILL.md` and follow its workflow in full before implementing anything
@@ -302,33 +301,16 @@ An offer the user declines or ignores is dropped — do not re-offer the same
 skill for the same material in the same session. Each skill's `## When to use`
 section names its own proactive triggers.
 
-The working skills live in this vault's `.claude/skills/`:
+The skills live in this vault's `.claude/skills/`. Each one's `SKILL.md` holds
+the full description and procedure — this list is only so you know what exists.
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
-- `promote-notes` — batched promotion from `inbox/` to `notes/`; presents a
-  candidate slate for approval before writing anything.
-- `verify-consistency` — audit live notes against `Direction.md` and report
-  conflicts, ambiguity, duplication, orphans, broken links, and stale/dangling
-  references.
-- `specify-methodology` — turn a `notes/` note into an experiment design backed by
-  web-researched evidence.
-- `prune-master-files` — remove resolved, superseded, and abandoned material
-  from `Direction.md` and `Memory.md`, preserving it as an approved proposal in
-  `archived/`. Removals only — it never rewords what survives.
-- `review-direction` — manual meta-review of new-contribution candidates and
-  direction revisions. The one skill that stays explicit-only — direction-level
-  review is valuable occasionally, not constantly.
+- `promote-notes` — batched `inbox/` → `notes/` promotion; slate approved first.
+- `verify-consistency` — audit notes against `Direction.md`; reports, never fixes.
+- `specify-methodology` — turn a `notes/` note into an evidence-backed experiment.
+- `prune-master-files` — cut resolved material from `Direction.md` / `Memory.md`.
+- `review-direction` — meta-review of contributions and direction. Explicit-only.
+- `grill-me` — stress-test a plan by interview. General-purpose, outside the pipeline.
 
-One general-purpose skill also ships in `.claude/skills/`, outside the note
-pipeline:
-
-- `grill-me` — interview the user relentlessly about a plan or design,
-  resolving each branch of the decision tree, to stress-test a research
-  direction, approach, or experiment before committing to it.
-
-`init-vault` is **not** in the vault. It is installed globally
-(`~/.claude/skills/`) and bootstraps a new vault by fetching this whole
-environment — this file, the skills above, and the master-file templates —
-from the template repository. Because these skills are fetched from that
-repository, improving one means editing it once there; new vaults then pick up
-the latest version.
+`init-vault` is not in the vault — it is installed globally, and is what creates
+a vault from the template repository and later refreshes its skills.
