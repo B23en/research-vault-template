@@ -1,6 +1,7 @@
 # Research Vault Template
 
 [![Built for Claude](https://img.shields.io/badge/Built%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.com)
+[![AGENTS.md compatible](https://img.shields.io/badge/AGENTS.md-compatible-1a1a1a)](https://agents.md)
 
 Template for a single-topic research knowledge vault — an Obsidian vault paired
 with an AI agent that records, verifies, and expands a research exploration
