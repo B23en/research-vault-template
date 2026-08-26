@@ -43,7 +43,9 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
   reports, plus reports from long or wide-reaching work the user explicitly
   commissioned. Never edited after the fact. Easily confused with `outputs/` —
   the two are told apart under `## Operating principles`.
-- `outputs/` — generated deliverables the user explicitly asked for: progress summaries, visualizations, HTML exports, and the like. Not part of the note pipeline.
+- `outputs/` — generated deliverables the user explicitly asked for: progress
+  summaries, visualizations, HTML exports, and the like. Not part of the note
+  pipeline.
 - `workspace/` — experiment work area: code, fetch scripts, and the datasets
   experiments run on. Not part of the note pipeline. Large data is not
   git-tracked; code, fetch scripts, and the `datasets.md` registry are. Datasets
@@ -61,8 +63,8 @@ Master files at the vault root:
   apply across the vault (e.g. authoring language). `## Open Questions` holds
   long-term unresolved questions — abstract uncertainties about the research,
   distinct from the concrete experiment-tied obstacles recorded in an
-  experiment note's `## Problems` section. `## Working Context` holds short-term context the agent
-  maintains in real time.
+  experiment note's `## Problems` section. `## Working Context` holds
+  short-term context the agent maintains in real time.
 - `Glossary.md` — canonical registry of project-coined codes and abbreviations
   (experiment-variant codes, contribution labels, hypothesis IDs, route/option
   letters, custom metric names). A descriptive index, not a decision baseline:
@@ -86,8 +88,9 @@ To get the next number for a folder, list it, find the highest existing `NNNN`,
 and add 1. `journal/` does not use this scheme — its files are
 `YYYY-MM-DD-<slug>.md`, where the slug names the work (`2026-05-23-verify.md`,
 `2026-05-23-glossary-migration.md`); a same-day collision takes a `-2` suffix.
-`archived/` keeps each note's original filename so links to it still resolve. `outputs/` files are named
-descriptively for what they are (e.g. `2026-05-23-progress-summary.md`,
+`archived/` keeps each note's original filename so links to it still resolve.
+`outputs/` files are named descriptively for what they are (e.g.
+`2026-05-23-progress-summary.md`,
 `concept-map.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
 or counter — `code/` is organized as the work requires, and `datasets.md` is a
 single registry file.
@@ -165,7 +168,7 @@ readable months later instead of forcing a hunt through old notes.
   the Glossary, used in a way that conflicts with their entry, or Glossary
   entries whose defining note has been archived or removed.
 
-## Workspace (experiment code, datasets & run outputs)
+## Workspace
 
 `workspace/` is the experiment work area — experiment code, the data it runs
 on, and the outputs it produces, and nothing else. Like `outputs/`, it sits
@@ -298,9 +301,11 @@ sweep. The bar scales with what the skill costs:
 - **Cheap and additive** (`capture-idea`) — offer, and act the moment the user
   agrees. A one-line confirmation is enough.
 - **Expensive or judgment-heavy** (`promote-notes`, `verify-consistency`,
-  `specify-methodology`, `review-direction`) — offer first and wait. These read
-  large parts of the vault and produce notes the rest of the research builds
-  on, so they never start unprompted.
+  `specify-methodology`, `prune-master-files`) — offer first and wait. These
+  read large parts of the vault, and produce notes or edit master files that
+  the rest of the research builds on, so they never start unprompted.
+- **Never offered** (`review-direction`) — explicit invocation only. Do not
+  raise it yourself, even when it would fit.
 
 An offer the user declines or ignores is dropped — do not re-offer the same
 skill for the same material in the same session. Each skill's `## When to use`

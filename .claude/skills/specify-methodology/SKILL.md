@@ -8,9 +8,9 @@ description: Turns a notes/ note into a concrete, evidence-backed experiment des
 ## Purpose
 
 A `notes/` note says *what to try*. An experiment note says *how, concretely,
-and on what evidence*. This skill bridges the two. Its defining feature is that the
-design is **grounded** — it actively searches for prior work rather than relying
-on guesswork, so the methodology stands on real evidence.
+and on what evidence*. This skill bridges the two. Its defining feature is
+that the design is **grounded** — it actively searches for prior work rather
+than relying on guesswork, so the methodology stands on real evidence.
 
 ## When to use
 

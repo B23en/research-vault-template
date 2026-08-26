@@ -9,9 +9,8 @@ description: Save a discussed idea fragment or piece of information into the res
 
 `inbox/` holds raw fragments — small ideas, stray information, snippets. It is
 the unprocessed material that everything downstream (notes, experiments) is
-synthesized from. The value of this skill is speed and
-consistency: a fragment captured the moment it appears is a fragment that
-survives.
+synthesized from. The value of this skill is speed and consistency: a fragment
+captured the moment it appears is a fragment that survives.
 
 ## When to use
 

@@ -33,9 +33,9 @@ run a check?" beats a generic offer to audit.
 ## Baseline: confirmed vs tentative
 
 `Direction.md` is **confirmed** — treat everything in it as ground truth.
-Everything in `notes/` and `experiments/` is
-**tentative** — work in progress. Verification compares tentative notes against
-the confirmed baseline, and tentative notes against each other.
+Everything in `notes/` and `experiments/` is **tentative** — work in progress.
+Verification compares tentative notes against the confirmed baseline, and
+tentative notes against each other.
 
 ## Scope
 
@@ -65,11 +65,12 @@ the confirmed baseline, and tentative notes against each other.
    sitting in `Memory.md` `## Open Questions`; a `## Working Context` item
    that is no longer valid; or an experiment note's `datasets:` link pointing to
    a heading absent from `workspace/datasets.md`, or its `code:` path that does
-   not exist. (The contents of `workspace/data/` and `workspace/runs/` are out of scope — like
-   `outputs/`, verification leaves them alone.) Report these — removing one edits
-   a master file, which is a *change*, so it goes through a proposal, not a direct
-   edit. File that proposal for the `Glossary.md` and `datasets:`/`code:` cases.
-   The two `Memory.md` cases stay in scope to *detect* but not to act on —
+   not exist. (The contents of `workspace/data/` and `workspace/runs/` are out
+   of scope — like `outputs/`, verification leaves them alone.) Report these —
+   removing one edits a master file, which is a *change*, so it goes through a
+   proposal, not a direct edit. File that proposal for the `Glossary.md` and
+   `datasets:`/`code:` cases. The two `Memory.md` cases stay in scope to
+   *detect* but not to act on —
    pruning the master files belongs to `prune-master-files`. Report them, name
    that skill as the fix, and offer to run it, rather than filing a proposal here
    that would compete with the one it writes.

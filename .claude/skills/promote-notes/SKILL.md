@@ -10,9 +10,9 @@ description: Surveys inbox/ for fragments ripe for synthesis and, after user app
 Promotion is how the research moves up the pipeline: raw fragments crystallise
 into worked-out notes. The base agent already offers this conversationally when
 material looks ready (per the suggest-don't-spring rule in `CLAUDE.md`
-`## Skills`). This skill covers the **batched,
-deliberate** case — the user wants the agent to sweep the current state, judge
-what is ripe, and propose a whole slate of promotions in one pass.
+`## Skills`). This skill covers the **batched, deliberate** case — the user
+wants the agent to sweep the current state, judge what is ripe, and propose a
+whole slate of promotions in one pass.
 
 Synthesis is a judgment-heavy additive action: getting it wrong produces a
 misleading note that downstream work then builds on. So this skill always

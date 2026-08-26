@@ -28,8 +28,9 @@ triggered only when the user wants it.
 ## Procedure
 
 1. **Survey the whole vault.** Read `Direction.md`, then skim `notes/`,
-   `references/`, `experiments/`, and the recent `journal/` reports. Look for patterns: recurring themes, clusters of related
-   notes, dead ends, surprising results, gaps.
+   `references/`, `experiments/`, and the recent `journal/` reports. Look for
+   patterns: recurring themes, clusters of related notes, dead ends, surprising
+   results, gaps.
 2. **New contribution candidates.** Identify what novel contribution the
    accumulated work points toward. Be concrete — not "this could be useful" but
    "given X, Y, and Z, this research could contribute <specific claim or

@@ -52,9 +52,9 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 ## Skills
 
 Working skills: `capture-idea`, `promote-notes`, `verify-consistency`,
-`specify-methodology`, `prune-master-files`, `review-direction`. Plus a general-purpose `grill-me`
-skill for stress-testing a plan or design. (`init-vault` is installed globally,
-not in the vault.)
+`specify-methodology`, `prune-master-files`, `review-direction`. Plus a
+general-purpose `grill-me` skill for stress-testing a plan or design.
+(`init-vault` is installed globally, not in the vault.)
 
 Skills are not slash commands you have to remember. Each one's `description` is
 what the agent routes on, so it offers the right skill when the conversation
