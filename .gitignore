@@ -7,6 +7,17 @@ Thumbs.db
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
 
+# Python bytecode and tool caches — derived from the recipe, never the recipe.
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.pytest_cache/
+
+# Virtual environments — thousands of platform-specific files (footgun guard).
+.venv/
+venv/
+
 # Experiment datasets — large / redistribution-restricted, never tracked.
 # Code, fetch scripts, and workspace/datasets.md ARE tracked.
 workspace/data/**
