@@ -34,7 +34,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 |------|---------|
 | `CLAUDE.md` | Agent configuration and vault rules |
 | `AGENTS.md` | Pointer sending `AGENTS.md`-reading agents (Codex, …) to `CLAUDE.md` |
-| `Direction.md` | Research direction — the verification baseline, tiered Settled / Working |
+| `Direction.md` | Research direction — the verification baseline |
 | `Memory.md` | Conventions + open questions + working context |
 | `Glossary.md` | Registry of project-coined codes and abbreviations |
 | `inbox/` | Raw fragments |
@@ -59,8 +59,8 @@ general-purpose `grill-me` skill for stress-testing a plan or design.
 Skills are not slash commands you have to remember. Each one's `description` is
 what the agent routes on, so it offers the right skill when the conversation
 reaches the moment that skill covers — you can just talk. `review-direction` is
-the exception — it is offered only when concrete evidence says the direction may
-have gone stale, and stays explicit-only otherwise.
+the exception — it is offered only after an audit has found a conflict with
+`Direction.md`, and stays explicit-only otherwise.
 
 ## After creating a vault
 

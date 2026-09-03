@@ -57,13 +57,10 @@ Master files at the vault root:
 - `AGENTS.md` — entry point for agents that read `AGENTS.md` rather than
   `CLAUDE.md` (Codex, and other tools following that convention). It holds no
   rules of its own: it points at this file and requires that it be read first.
-- `Direction.md` — the overall research direction. This is the **verification
-  baseline**, and it is tiered, with each section marked. `## Confirmed
-  decisions` and `## Constraints` are **Settled** — evidence cannot overturn
-  them. `## Topic`, `## Goal`, and `## Scope` are **Working** — the current best
-  direction, which evidence may push on. Both tiers change only through an
-  approved proposal; the tier decides only which side is presumed wrong when a
-  note disagrees.
+- `Direction.md` — the overall research direction, and the **verification
+  baseline** every consistency check is measured against. It holds the *current*
+  direction rather than permanent truth — evidence can run against it — but it
+  changes only through an approved proposal, never by a direct edit.
 - `Memory.md` — three sections. `## Conventions` holds standing rules that
   apply across the vault (e.g. authoring language). `## Open Questions` holds
   long-term unresolved questions — abstract uncertainties about the research,
@@ -226,9 +223,8 @@ the rationale, and the concrete edit. The human reviews proposals in
 conversation; on approval you apply the change and move the proposal note to
 `archived/`. `Direction.md` is the verification baseline — if it is corrupted,
 every future consistency check is wrong, which is why it is never edited without
-an approved proposal. That holds for **both** of its tiers: a Working section is
-still the baseline, and the agent may argue that one has gone stale but never
-rewrite it on its own authority.
+an approved proposal. The agent may argue that a line in it has gone stale, but
+never rewrites one on its own authority.
 
 **Adaptive always-on behaviors.** When the conversation is about the research
 itself — ideas, notes, experiments, results — apply three behaviors:
@@ -311,13 +307,10 @@ sweep. The bar scales with what the skill costs:
   `specify-methodology`, `prune-master-files`) — offer first and wait. These
   read large parts of the vault, and produce notes or edit master files that
   the rest of the research builds on, so they never start unprompted.
-- **Offer only on evidence** (`review-direction`) — never raise it on a hunch
-  that the direction is drifting. Offer it, in one line, only when one of three
-  things has happened: a `verify-consistency` report recorded **baseline
-  drift**; an experiment result directly refutes a line in a **Working** section
-  of `Direction.md`; or the user asked. Otherwise stay quiet. Reviewing the
-  direction constantly produces noise, which is why the bar is evidence rather
-  than intuition.
+- **Offer only after an audit** (`review-direction`) — never raise it on a hunch
+  that the direction is drifting. Offer it, in one line, when a
+  `verify-consistency` report has recorded a conflict with `Direction.md`, or
+  when the user asks. Otherwise stay quiet.
 
 An offer the user declines or ignores is dropped — do not re-offer the same
 skill for the same material in the same session. Each skill's `## When to use`
@@ -334,7 +327,7 @@ it with real files — one skill, one file.
 - `verify-consistency` — audit notes against `Direction.md`; reports, never fixes.
 - `specify-methodology` — turn a `notes/` note into an evidence-backed experiment.
 - `prune-master-files` — cut resolved material from `Direction.md` / `Memory.md`.
-- `review-direction` — meta-review of contributions and direction. Evidence-gated.
+- `review-direction` — meta-review of contributions and direction. Audit-gated.
 - `grill-me` — stress-test a plan by interview. General-purpose, outside the pipeline.
 
 `init-vault` is not in the vault — it is installed globally, and is what creates

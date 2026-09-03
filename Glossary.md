@@ -28,8 +28,8 @@
 ## Authority
 
 This file is a **descriptive index, not a decision baseline** — `Direction.md`
-stays the single source of truth, in both its Settled and its Working tiers. The
-Glossary only records what a code *means* and points to where it is decided.
+stays the single source of truth. The Glossary only records what a code *means*
+and points to where it is decided.
 
 - **Adding a new code is additive** — write the entry directly.
 - **Changing the meaning of an existing code is a *change*** — file a proposal in
