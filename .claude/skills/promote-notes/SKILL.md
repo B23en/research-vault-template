@@ -51,7 +51,9 @@ The skill has two phases. **Do not collapse them — present, wait, then write.*
 ### Phase 1 — Survey & present
 
 1. **Read the baseline.** Read `Direction.md` so judgments respect confirmed
-   constraints. Skim `Memory.md` for working context and open questions.
+   constraints. Skim `Memory.md` for working context and open questions, and
+   read its `## Conventions` — standing rules, including the language notes are
+   written in.
 2. **Survey the source folder.** List `inbox/` in full and read every fragment.
    Then read `notes/` and follow each note's `related` to see which fragments
    already feed it, so the same fragment is not re-promoted into a second note.

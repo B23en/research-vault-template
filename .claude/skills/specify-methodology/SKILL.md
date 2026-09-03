@@ -34,7 +34,9 @@ has not named one, ask which note to specify before proceeding.
 
 1. **Read the context.** Read the source note and follow its `related` chain
    back to the fragments behind it. Read `Direction.md` so the design
-   respects confirmed constraints (resources, scope, evaluation choices).
+   respects confirmed constraints (resources, scope, evaluation choices), and
+   `Memory.md` `## Conventions` for the standing rules, including the language
+   notes are written in.
 2. **Gather evidence actively.** Web-search for prior work: has something like
    this been tried? What did they measure? What baselines are standard in this
    area? What pitfalls are reported? For each genuinely useful source, create a
