@@ -39,12 +39,14 @@ already assigns it.
 |---|---|---|
 | `Memory.md` `## Working Context` | ordinary upkeep — `CLAUDE.md` has stale items removed immediately | apply directly, but still record it |
 | `Memory.md` `## Open Questions` | a *change* — `CLAUDE.md` says do not auto-prune | proposal |
-| `Direction.md` — `## Confirmed decisions`, `## Scope`, `## Constraints` | a *change* — the baseline is never edited without an approved proposal | proposal |
+| `Direction.md` — `## Confirmed decisions`, `## Constraints` (Settled) | a *change* — the baseline is never edited without an approved proposal | proposal |
+| `Direction.md` — `## Scope` (Working) | a *change* — Working is still the baseline, not the agent's to rewrite | proposal |
 
 ## Out of scope
 
-- **`Direction.md` `## Topic` and `## Goal`.** Changing what the research *is*
-  is a direction revision, not upkeep. Say so and point at `review-direction`.
+- **`Direction.md` `## Topic` and `## Goal`.** Both are **Working** sections, but
+  changing what the research *is* is a direction revision, not upkeep. Say so and
+  point at `review-direction`.
 - **`Memory.md` `## Conventions`.** Standing rules; `CLAUDE.md` says never
   auto-prune them. Remove an item only when the user names it explicitly.
 - **`Glossary.md`.** Its whole purpose is that a code stays readable months

@@ -17,7 +17,9 @@ their own.
 
 1. Read `./CLAUDE.md` end to end.
 2. Read `./Direction.md` — the research direction, and the baseline that every
-   consistency check is measured against.
+   consistency check is measured against. Note which of its sections are marked
+   **Settled** and which are **Working**; the file itself explains what the two
+   tiers change, and what they do not.
 3. Read `./Memory.md` `## Conventions` — standing rules for this vault,
    including the language notes are written in.
 
