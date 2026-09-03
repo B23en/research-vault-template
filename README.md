@@ -35,7 +35,7 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `CLAUDE.md` | Agent configuration and vault rules |
 | `AGENTS.md` | Pointer sending `AGENTS.md`-reading agents (Codex, …) to `CLAUDE.md` |
 | `Direction.md` | Research direction — the verification baseline, tiered Settled / Working |
-| `Memory.md` | Open questions + working context |
+| `Memory.md` | Conventions + open questions + working context |
 | `Glossary.md` | Registry of project-coined codes and abbreviations |
 | `inbox/` | Raw fragments |
 | `notes/` | Worked-out thinking: ideas, discussion, writing |
