@@ -20,10 +20,9 @@ to `Direction.md` are *changes*, and changes go through `proposals/`.
 - **Explicit** — the user asks to verify, check consistency, audit the vault,
   find contradictions, or clean up stale references. Run it.
 - **Proactive** — reach for it unasked when a new note or experiment design
-  looks like it may clash with a line in `Direction.md`; right
-  after a batch of notes has been created; when `Direction.md` itself has just
-  changed; or when the user is about to build on material that has not been
-  checked in a while.
+  looks like it may clash with a line in `Direction.md`; right after a batch of
+  notes has been created; when `Direction.md` itself has just changed; or when
+  the user is about to build on material that has not been checked in a while.
 
 Proactive means **offer in one line and wait**, not start. A full audit reads
 every live note, so it never runs unprompted. Name the specific worry when
