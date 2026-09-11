@@ -79,13 +79,6 @@ needs no evidence, because it must not change what the item says. Label it as
 a rewording so it is reviewed as one. In `Direction.md`, where a slight shift in
 meaning moves the baseline, leave an item alone when in doubt.
 
-## Never
-
-1. Never touch `## Topic`, `## Goal`, or `Glossary.md` — and `## Conventions`
-   only for an item the user names.
-2. Never change anything before the proposal is written and approved.
-3. Never propose a removal or update you could not evidence.
-
 ## Procedure
 
 ### Phase 1 — survey and propose

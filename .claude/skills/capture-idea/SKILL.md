@@ -29,8 +29,7 @@ Writing to `inbox/` is additive, so it needs no proposal — once the user agree
 1. **Isolate the fragment.** Identify the specific idea, insight, or fact. If
    several distinct fragments came up, make one note each — `inbox/` notes are
    atomic.
-2. **Find the next id.** List `inbox/`, find the highest `inbox-NNNN`, add 1.
-   Zero-pad to 4 digits.
+2. **Find the next id** as `CLAUDE.md` `## Note naming` describes.
 3. **Pick a short title.** Lowercase, hyphen-separated, 2–5 words, English.
 4. **Create the note** at `inbox/inbox-NNNN-short-title.md` using the template
    below. Write the body in the language set by `Memory.md` `## Conventions`;

@@ -29,13 +29,6 @@ every live note, so it never runs unprompted. Name the specific worry when
 offering — "this may cut against the scope line in `Direction.md`; want me to
 run a check?" beats a generic offer to audit.
 
-## Baseline
-
-Everything in `notes/` and `experiments/` is **tentative** — work in progress.
-`Direction.md` is what it is measured against, and it holds the *current*
-direction, not permanent truth. Tentative notes are compared against it and
-against each other. Nothing is edited here — see the procedure.
-
 ## Scope
 
 - **Full audit** — check every note in `notes/` and `experiments/`.
@@ -62,19 +55,15 @@ against each other. Nothing is edited here — see the procedure.
    filenames, a broken link usually means a typo or a note that was deleted
    rather than archived.
 7. **Stale or dangling reference** — a `Glossary.md` entry whose defining note
-   is missing or has been moved to `archived/`; a resolved question still
-   sitting in `Memory.md` `## Open Questions`; a `## Working Context` item
-   that is no longer valid; or an experiment note's `datasets:` link pointing to
-   a heading absent from `workspace/datasets.md`, or its `code:` path that does
-   not exist. (The contents of `workspace/data/` and `workspace/runs/` are out
-   of scope — like `outputs/`, verification leaves them alone.) Report these —
-   removing one edits a master file, which is a *change*, so it goes through a
-   proposal, not a direct edit. File that proposal for the `Glossary.md` and
-   `datasets:`/`code:` cases. The two `Memory.md` cases stay in scope to
-   *detect* but not to act on —
-   pruning the master files belongs to `prune-master-files`. Report them, name
-   that skill as the fix, and offer to run it, rather than filing a proposal here
-   that would compete with the one it writes.
+   is missing; a resolved question left in `Memory.md` `## Open Questions`; a
+   `## Working Context` item that is no longer valid; or an experiment note's
+   `datasets:` link pointing to a heading absent from `workspace/datasets.md`,
+   or its `code:` path that does not exist. (The contents of `workspace/data/`
+   and `workspace/runs/` are out of scope — like `outputs/`, verification leaves
+   them alone.) Report these. The `Glossary.md` and `datasets:`/`code:` cases
+   need a proposal. A resolved Open Question is for `prune-master-files` to
+   remove — offer it rather than filing a competing proposal here. A dead
+   Working Context item is plain upkeep.
 
 ## Procedure
 
@@ -95,13 +84,9 @@ against each other. Nothing is edited here — see the procedure.
    resolution requires editing or archiving an existing note, or editing
    `Direction.md` — that is a change, not an addition, so create a proposal note
    in `proposals/` (template below). Minor issues (orphans, light ambiguity that
-   the user can fix in passing) stay in the report only. Two findings hand off
-   instead of being filed here. Stale `Memory.md` items go to
-   `prune-master-files` (see **Stale or dangling reference**). A conflict
-   involving `Direction.md` goes to `review-direction` — revising the direction
-   is that skill's job, not this one's; name it as the fix and offer to run it.
-6. **Never edit notes or `Direction.md` directly.** Detection and reporting
-   only.
+   the user can fix in passing) stay in the report only. A conflict involving
+   `Direction.md` hands off instead of being filed here — revising the direction
+   is `review-direction`'s job; name it as the fix and offer to run it.
 
 ## Verification report template
 

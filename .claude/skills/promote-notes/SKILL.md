@@ -93,9 +93,8 @@ Run this phase only after the user approves — fully, partially, or with edits.
    If they renamed or reframed an item, use the updated version. If they
    rejected the whole slate, stop and report.
 8. **Allocate ids up front.** Before writing, compute the next `note-NNNN` id
-   for the *whole batch* so multiple new notes get sequential numbers without
-   collision (per `CLAUDE.md` numbering rules: list the folder, find the highest
-   existing `NNNN`, increment per item in order).
+   for the *whole batch* (per `CLAUDE.md` `## Note naming`), so multiple new
+   notes get sequential numbers without collision.
 9. **Create the notes.** For each approved item, write the file using the
    template below. In the new note's `related`, link every source fragment as
    `[[wiki-link]]`. **Do not modify the source notes** — promotion creates a

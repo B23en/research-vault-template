@@ -86,11 +86,12 @@ zero-padded 4-digit counter that is **independent per folder**.
 | `experiments/` | `exp-` | `exp-0005-batch-ablation.md` |
 | `proposals/` | `prop-` | `prop-0009-revise-scope.md` |
 
-To get the next number for a folder, list it, find the highest existing `NNNN`,
-and add 1. `journal/` does not use this scheme — its files are
-`YYYY-MM-DD-<slug>.md`, where the slug names the work (`2026-05-23-verify.md`,
-`2026-05-23-glossary-migration.md`); a same-day collision takes a `-2` suffix.
-`archived/` keeps each note's original filename so links to it still resolve.
+To get the next number, find the highest `NNNN` for that prefix in the folder
+and in `archived/`, then add 1. `archived/` keeps each note's original filename,
+so links to it still resolve and its numbers stay taken. `journal/` does not use
+this scheme — its files are `YYYY-MM-DD-<slug>.md`, where the slug names the
+work (`2026-05-23-verify.md`, `2026-05-23-glossary-migration.md`); a same-day
+collision takes a `-2` suffix.
 `outputs/` files are named descriptively for what they are (e.g.
 `2026-05-23-progress-summary.md`,
 `concept-map.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
@@ -168,7 +169,7 @@ readable months later instead of forcing a hunt through old notes.
   `proposals/`, because downstream notes and filenames depend on the old meaning.
 - **Upkeep.** `verify-consistency` flags codes used in notes but missing from
   the Glossary, used in a way that conflicts with their entry, or Glossary
-  entries whose defining note has been archived or removed.
+  entries whose defining note is missing.
 
 ## Workspace
 
@@ -216,10 +217,11 @@ promotion creates new notes rather than renaming, wiki-links never break.
 ## Operating principles
 
 **Additive is automatic; changes are proposed.** Creating a new note is additive
-and low-risk — do it directly. Modifying `Direction.md`, editing or archiving an
-existing note, or any non-additive change is a *change*: do not do it silently.
-Write a proposal note in `proposals/` describing what to change, which file(s),
-the rationale, and the concrete edit. The human reviews proposals in
+and low-risk — do it directly. So is keeping `Memory.md` `## Working Context`
+current, removals included. Modifying `Direction.md`, editing or archiving an
+existing note, or any other non-additive change is a *change*: do not do it
+silently. Write a proposal note in `proposals/` describing what to change, which
+file(s), the rationale, and the concrete edit. The human reviews proposals in
 conversation; on approval you apply the change and move the proposal note to
 `archived/`. `Direction.md` is the verification baseline — if it is corrupted,
 every future consistency check is wrong, which is why it is never edited without
@@ -238,10 +240,10 @@ casual exchange — there they are just noise.
 decision in progress, a thread to pick up later, session context — record it
 under `## Working Context` in `Memory.md` as you go. When an item becomes
 invalid or is promoted into a permanent note, remove it immediately. The
-`## Open Questions` section is long-term; do not auto-prune it.
+`## Open Questions` section is long-term; do not auto-prune it. The
 `## Conventions` section holds standing rules (authoring language, formatting
-norms, naming overrides); add to it only on explicit user instruction and
-never auto-prune it.
+norms, naming overrides) that everything you write must follow; add to it only
+on explicit user instruction, and never auto-prune it.
 
 **Evidence.** Ground claims about feasibility and prior work. Use active web
 search to find prior work, and record it as `references/` notes.
