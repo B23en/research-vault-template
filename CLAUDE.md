@@ -326,7 +326,7 @@ it with real files — one skill, one file.
 - `promote-notes` — batched `inbox/` → `notes/` promotion; slate approved first.
 - `verify-consistency` — audit notes against `Direction.md`; reports, never fixes.
 - `specify-methodology` — turn a `notes/` note into an evidence-backed experiment.
-- `prune-master-files` — cut resolved material from `Direction.md` / `Memory.md`.
+- `prune-master-files` — keep `Direction.md` / `Memory.md` lean and current.
 - `review-direction` — meta-review of contributions and direction. Audit-gated.
 - `grill-me` — stress-test a plan by interview. General-purpose, outside the pipeline.
 
