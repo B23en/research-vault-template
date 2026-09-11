@@ -19,20 +19,6 @@ that is still live but has partly changed — a question half answered, a limit
 that has moved — is updated rather than dropped whole, so what still holds stays
 in the file. An item that is merely overlong or unclear may be reworded, too.
 
-## When to use
-
-- **Explicit** — the user asks to prune, clean up, compact, or shorten the
-  master files, or says `Direction.md` / `Memory.md` has got unwieldy. Run it.
-- **Proactive** — reach for it unasked when an experiment's `## Results` answers
-  all or part of a standing `## Open Questions` entry; when an approved proposal
-  has just superseded a line in `Direction.md`; when `## Working Context` holds
-  items pointing at notes that no longer exist; or when the two files have grown
-  long enough that reading them in full is a chore.
-
-Proactive means **offer in one line and wait**, not start. Phase 1 reads both
-master files plus most of the vault, and the edit touches the verification
-baseline. It never runs unprompted.
-
 ## What may be pruned, and under whose authority
 
 This skill invents no permissions. Each target keeps the authority `CLAUDE.md`

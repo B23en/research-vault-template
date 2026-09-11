@@ -15,28 +15,13 @@ research arc. It answers two meta questions:
 - **Direction revision** — do the accumulated findings suggest the goal or scope
   in `Direction.md` should change: narrow, widen, or shift?
 
-Direction-level review is valuable occasionally, not constantly — running it on
-a hunch would just produce noise. So it is never raised because the direction
-*feels* off. It waits to be asked, or for an audit to have found an actual
-conflict with `Direction.md`.
-
-## When to use
-
-- **Explicit** — the user asks for a direction review, a big-picture check, a
-  look at new contributions, or a reconsideration of the goal/scope.
-- **After an audit** — a `verify-consistency` report has recorded a conflict
-  with `Direction.md`. Offer it in one line as the fix, and wait.
-
-Never on a hunch, and never start it unprompted. An offer the user declines is
-dropped for the session. Detecting conflicts is `verify-consistency`'s job — do
-not redo that work here.
-
 ## Procedure
 
 1. **Survey the whole vault.** Read `Direction.md`, then skim `notes/`,
    `references/`, `experiments/`, and the recent `journal/` reports. Look for
    patterns: recurring themes, clusters of related notes, dead ends, surprising
-   results, gaps.
+   results, gaps. Conflicts with `Direction.md` are `verify-consistency`'s to
+   find — build on its reports rather than re-auditing.
 2. **New contribution candidates.** Identify what novel contribution the
    accumulated work points toward. Be concrete — not "this could be useful" but
    "given X, Y, and Z, this research could contribute <specific claim or

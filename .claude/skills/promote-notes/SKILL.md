@@ -29,21 +29,6 @@ Other transitions are out of scope: `notes/` → `experiments/` belongs to
 `specify-methodology`; direction-level changes belong to `review-direction`;
 verification is handled by `verify-consistency`.
 
-## When to use
-
-- **Explicit** — the user says "promote", "synthesize these", "advance the
-  pipeline", "level up", "what's ready to move forward", or otherwise asks to
-  move fragments forward. Run it.
-- **Proactive** — reach for it unasked when the vault arrives at the moment.
-  Signals worth acting on are several `inbox/` fragments accumulating around
-  the same thought, the user circling back to a topic or calling it settled,
-  and a research discussion that has just produced a batch of fragments.
-
-Proactive means **offer in one line and wait**, not start. Phase 1 reads the
-whole of `inbox/` and `notes/`, so it never runs unprompted. An offer the user
-declines or ignores is dropped — do not re-offer for the same fragments in the
-same session.
-
 ## Procedure
 
 The skill has two phases. **Do not collapse them — present, wait, then write.**

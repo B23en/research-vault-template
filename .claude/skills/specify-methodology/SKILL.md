@@ -12,19 +12,6 @@ and on what evidence*. This skill bridges the two. Its defining feature is
 that the design is **grounded** — it actively searches for prior work rather
 than relying on guesswork, so the methodology stands on real evidence.
 
-## When to use
-
-- **Explicit** — the user asks to design an experiment, work out a methodology,
-  or figure out how to test something. Plain openers count — "let's design the
-  experiment now", "how would we actually test this", "what's the setup?"
-- **Proactive** — reach for it unasked when a `notes/` note has firmed up into
-  something testable, when the discussion turns from *what to try* toward *how
-  to measure it*, or when the user starts asking about baselines, metrics, or
-  required resources.
-
-Proactive means **offer in one line and wait**, not start. This skill runs web
-searches and creates several notes, so it never runs unprompted.
-
 ## Input
 
 A note in `notes/` — the worked-out idea or strategy to be tested. If the user

@@ -12,18 +12,6 @@ the unprocessed material that everything downstream (notes, experiments) is
 synthesized from. The value of this skill is speed and consistency: a fragment
 captured the moment it appears is a fragment that survives.
 
-## When to use
-
-- **Explicit** — the user says "save this", "capture that", "note this down",
-  or similar. Act immediately.
-- **Proactive** — a meaningful fragment surfaces on its own during research
-  discussion. Offer to capture it ("Want me to drop this in `inbox/`?"). Do not
-  capture silently on every utterance; `inbox/` should hold real fragments, not
-  conversational noise.
-
-Writing to `inbox/` is additive, so it needs no proposal — once the user agrees
-(or asked explicitly), just create the note.
-
 ## Procedure
 
 1. **Isolate the fragment.** Identify the specific idea, insight, or fact. If

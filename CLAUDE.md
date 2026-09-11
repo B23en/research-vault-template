@@ -7,22 +7,13 @@ topic**. The agent records, verifies, and expands the research exploration
 process: idea fragments, worked-out notes, supporting evidence, experiments
 and their results, and the refinement that connects them.
 
-The agent's behavior is defined by this file (always-on guidance) and by the
-skills in `.claude/skills/` — invokable procedures, listed under `## Skills`
-below. Read the relevant skill's `SKILL.md` before performing its task.
-
-**Agent entry points.** This file is the authoritative configuration, and Claude
-Code loads it automatically. Agents that read `AGENTS.md` instead — Codex and
-others following that convention — are sent here by the root `AGENTS.md`, which
-is a pointer only and carries no rules of its own, so there is never a second
-copy of these rules to keep in sync. Whichever agent is running, this file plus
-the skills in `.claude/skills/` define the behavior.
+This file is the authoritative configuration: together with the skills in
+`.claude/skills/`, it defines the agent's behavior, whichever agent is running.
 
 ## Vault structure (canonical definition)
 
-This section documents the canonical vault layout — the template repository
-embodies it, and the `init-vault` bootstrapper verifies a freshly created vault
-against it. Keep it accurate.
+`init-vault` checks every new vault against the folders and master files listed
+here, so keep this section accurate.
 
 Folders — note files live here, and **a note's folder is its lifecycle stage**:
 
@@ -36,42 +27,31 @@ Folders — note files live here, and **a note's folder is its lifecycle stage**
   results, interpretation, and the problems hit along the way.
 - `proposals/` — the agent's change-proposals awaiting human approval.
 - `archived/` — discarded or superseded notes and applied proposals, each
-  keeping its original filename so links to it still resolve. A
-  `prune-master-files` proposal archived here holds the only surviving copy of
-  what it cut from the master files — nothing in here is safe to clear out.
-- `journal/` — append-only record of what happened and when: verification
-  reports, plus reports from long or wide-reaching work the user explicitly
-  commissioned. Never edited after the fact. Easily confused with `outputs/` —
-  the two are told apart under `## Operating principles`.
-- `outputs/` — generated deliverables the user explicitly asked for: progress
-  summaries, visualizations, HTML exports, and the like. Not part of the note
-  pipeline.
-- `workspace/` — experiment work area: code, fetch scripts, and the datasets
-  experiments run on. Not part of the note pipeline. Large data is not
-  git-tracked; code, fetch scripts, and the `datasets.md` registry are. Datasets
-  are shared — one copy serves many experiments. See `## Workspace` below.
+  keeping its original filename. Nothing here is safe to clear out: an applied
+  proposal can be the only record of what it removed.
+- `journal/` — append-only record of what happened and when.
+- `outputs/` — generated deliverables the user explicitly asked for.
+- `workspace/` — experiment code, the data it runs on, and run outputs; see
+  `## Workspace`.
 
 Master files at the vault root:
 
-- `CLAUDE.md` — this file. Agent configuration and vault rules.
-- `AGENTS.md` — entry point for agents that read `AGENTS.md` rather than
-  `CLAUDE.md` (Codex, and other tools following that convention). It holds no
-  rules of its own: it points at this file and requires that it be read first.
-- `Direction.md` — the overall research direction, and the **verification
-  baseline** every consistency check is measured against. It holds the *current*
-  direction rather than permanent truth — evidence can run against it — but it
-  changes only through an approved proposal, never by a direct edit.
-- `Memory.md` — three sections. `## Conventions` holds standing rules that
-  apply across the vault (e.g. authoring language). `## Open Questions` holds
-  long-term unresolved questions — abstract uncertainties about the research,
-  distinct from the concrete experiment-tied obstacles recorded in an
-  experiment note's `## Problems` section. `## Working Context` holds
-  short-term context the agent maintains in real time.
-- `Glossary.md` — canonical registry of project-coined codes and abbreviations
-  (experiment-variant codes, contribution labels, hypothesis IDs, route/option
-  letters, custom metric names). A descriptive index, not a decision baseline:
-  it records what each code means and links to where it is defined. General
-  domain terms and model names do not belong here.
+- `CLAUDE.md` — this file.
+- `AGENTS.md` — a pointer for agents that read `AGENTS.md` instead of this file
+  (Codex and others); it carries no rules of its own.
+- `Direction.md` — the research direction, and the **verification baseline**
+  every consistency check is measured against. It holds the *current* direction
+  rather than permanent truth: evidence can run against it.
+- `Memory.md` — standing `## Conventions`, long-term `## Open Questions`
+  (abstract uncertainties, unlike the concrete obstacles in an experiment's
+  `## Problems`), and short-term `## Working Context`. How each is kept is under
+  `## Operating principles`.
+- `Glossary.md` — registry of the codes this project coins (variant codes,
+  contribution labels, hypothesis IDs, and the like), each with its meaning and
+  a link to where it is defined. General terms and model names belong in
+  `Memory.md` `## Conventions`, if anywhere. It is an index, not a baseline:
+  adding a code is additive, while redefining one is a change, since notes and
+  filenames depend on its meaning. Its own header covers the format.
 
 ## Note naming
 
@@ -87,16 +67,12 @@ zero-padded 4-digit counter that is **independent per folder**.
 | `proposals/` | `prop-` | `prop-0009-revise-scope.md` |
 
 To get the next number, find the highest `NNNN` for that prefix in the folder
-and in `archived/`, then add 1. `archived/` keeps each note's original filename,
-so links to it still resolve and its numbers stay taken. `journal/` does not use
-this scheme — its files are `YYYY-MM-DD-<slug>.md`, where the slug names the
-work (`2026-05-23-verify.md`, `2026-05-23-glossary-migration.md`); a same-day
-collision takes a `-2` suffix.
-`outputs/` files are named descriptively for what they are (e.g.
-`2026-05-23-progress-summary.md`,
-`concept-map.html`) — no prefix, no counter. `workspace/` likewise uses no prefix
-or counter — `code/` is organized as the work requires, and `datasets.md` is a
-single registry file.
+and in `archived/` — archived notes keep their filenames, so their numbers stay
+taken — then add 1. `journal/` does not use this scheme — its files are
+`YYYY-MM-DD-<slug>.md`, where the slug names the work (`2026-05-23-verify.md`,
+`2026-05-23-glossary-migration.md`); a same-day collision takes a `-2` suffix.
+`outputs/` files are named descriptively — `2026-05-23-progress-summary.md`,
+`concept-map.html` — and `workspace/` uses no prefix or counter.
 
 Short titles are lowercase, hyphen-separated, 2–5 words, English.
 
@@ -116,13 +92,10 @@ related: ["[[inbox-0007-gpu-memory-trick]]", "[[exp-0005-batch-ablation]]"]
 
 - `id` matches the filename's prefix and number.
 - `created` is an ISO date, written once and never touched again. There is
-  deliberately no `updated` field — git already records when a note changed,
-  and a hand-maintained one goes stale the first time someone forgets it,
-  which is worse than not having it.
+  deliberately no `updated` field — git records when a note changed.
 - `source` records where the note came from — which fragments, which
   conversation, which reference.
-- `related` lists Obsidian wiki-links to connected notes — see the Linking
-  section below.
+- `related` lists Obsidian wiki-links to connected notes — see `## Linking`.
 
 Experiment notes additionally carry `note: "[[note-NNNN-...]]"` — the `notes/`
 note they were specified from. When they use the workspace they also carry
@@ -138,45 +111,18 @@ wiki-links — `[[note-filename-without-extension]]` — in two places:
 
 - **In note bodies.** Whenever a note's prose refers to another note — an idea
   it builds on, a reference it cites, an experiment it feeds — write that mention
-  as a `[[wiki-link]]`, not as plain text. A cross-reference you can click is
-  worth far more than one a reader has to go search for.
+  as a `[[wiki-link]]`, not as plain text.
 - **In frontmatter `related`.** Mirror every wiki-link used in the body into the
   `related` field, so the connection shows up in the note's metadata and in
   Obsidian's graph and backlink panels.
 
-Link by filename stem, e.g. `[[note-0003-adaptive-batching]]`. Because promotion
-creates new notes instead of renaming, and `archived/` keeps original filenames,
-these links stay valid for the life of the vault.
-
-## Glossary
-
-`Glossary.md` at the vault root is the canonical registry of **project-coined
-codes** — the local symbols the research invents (experiment-variant codes like
-`B1`, contribution labels like `C1`, hypothesis IDs, route/option letters,
-custom metric or parameter names). Its purpose is traceability: a code stays
-readable months later instead of forcing a hunt through old notes.
-
-- **Scope.** Only symbols this project coins. General domain terms and
-  model/method names belong in `Memory.md` `## Conventions` or are external — not
-  here.
-- **Format.** One entry per code: the symbol, a one-line definition, and a
-  `[[wiki-link]]` to the note where it is authoritatively defined. Codes are
-  grouped into category sections so the same letter in two different families
-  does not collide; a genuinely overloaded symbol is marked and disambiguated.
-- **Authority.** The Glossary is a descriptive index, not a baseline —
-  `Direction.md` stays ground truth. Defining a new code is additive (write it
-  directly). Redefining an existing code is a *change* and goes through
-  `proposals/`, because downstream notes and filenames depend on the old meaning.
-- **Upkeep.** `verify-consistency` flags codes used in notes but missing from
-  the Glossary, used in a way that conflicts with their entry, or Glossary
-  entries whose defining note is missing.
+Link by filename stem, e.g. `[[note-0003-adaptive-batching]]`.
 
 ## Workspace
 
-`workspace/` is the experiment work area — experiment code, the data it runs
-on, and the outputs it produces, and nothing else. Like `outputs/`, it sits
-**outside the note pipeline**: no frontmatter, no naming counter, and
-verification leaves its data and run outputs alone.
+`workspace/` holds experiment code, the data it runs on, and what runs produce —
+nothing else. It sits **outside the note pipeline**, and verification leaves its
+data and run outputs alone.
 
 - `workspace/code/` — experiment code and fetch scripts. **Git-tracked.**
 - `workspace/data/` — input datasets, shared across experiments. **Not tracked.**
@@ -248,28 +194,17 @@ on explicit user instruction, and never auto-prune it.
 **Evidence.** Ground claims about feasibility and prior work. Use active web
 search to find prior work, and record it as `references/` notes.
 
-**Deliverables and records.** Two folders exist only on explicit request, and
-they are the easiest pair in the vault to confuse. `outputs/` holds generated
-artifacts — a progress summary, a visualization, an HTML export — named
-descriptively, carrying no frontmatter, and left alone by verification; it
-answers *what the research looks like now*, and is regenerated freely.
-`journal/` answers *what happened, when*, and is never regenerated. If
-re-running the same work next month would leave you wanting both copies, it
-belongs in `journal/`. Research content belongs in neither — it goes in the
-pipeline folders.
-
-**Run reports.** `journal/` is the append-only record of what happened and when.
-Write an entry there when three things hold — the user explicitly commissioned
-the work, it ran long or changed the vault widely, and nothing else already
-records it durably. Ad-hoc migrations, bulk cleanups, and research sweeps are
-the usual case, because no skill owns them. Work that leaves its own record does
-not get a second one: a `verify-consistency` report *is* its journal entry, and
-a `prune-master-files` run is recorded by its proposal in `archived/`. Give the
-entry no frontmatter — `journal/` sits outside the note-naming and linking
-regime — but do `[[wiki-link]]` the notes it touched in the body so it can be
-traced later. Cover five things: what was commissioned, what was done, what
-changed, the outcome, and what was left undone. Never edit a past entry — if it
-turned out wrong, write a new one.
+**Records and deliverables.** `outputs/` answers *what the research looks like
+now*: generated artifacts, named descriptively, with no frontmatter, regenerated
+freely and left alone by verification. `journal/` answers *what happened, when*,
+and is never edited or regenerated — if an entry turns out wrong, write a new
+one. If re-running the same work next month would leave you wanting both copies,
+it belongs in `journal/`. Both exist only on explicit request, and research
+content goes in neither. Leave a journal entry when the user commissioned long
+or wide-reaching work that nothing else records — a `verify-consistency` report
+already is one, and a `prune-master-files` run is recorded by its proposal. An
+entry has no frontmatter, `[[wiki-link]]`s the notes it touched, and says what
+was done, what changed, and what was left undone.
 
 **Git.** The whole vault is version-controlled with git. Commit at your own
 discretion once you have completed a meaningful unit of work — a captured
@@ -309,20 +244,16 @@ sweep. The bar scales with what the skill costs:
   `specify-methodology`, `prune-master-files`) — offer first and wait. These
   read large parts of the vault, and produce notes or edit master files that
   the rest of the research builds on, so they never start unprompted.
-- **Offer only after an audit** (`review-direction`) — never raise it on a hunch
-  that the direction is drifting. Offer it, in one line, when a
-  `verify-consistency` report has recorded a conflict with `Direction.md`, or
-  when the user asks. Otherwise stay quiet.
+- **Offer only after an audit** (`review-direction`) — raise it in one line
+  once a `verify-consistency` report has recorded a conflict with
+  `Direction.md`; otherwise leave it for the user to ask for.
 
 An offer the user declines or ignores is dropped — do not re-offer the same
-skill for the same material in the same session. Each skill's `## When to use`
-section names its own proactive triggers.
+skill for the same material in the same session.
 
-The skills live in this vault's `.claude/skills/`. Each one's `SKILL.md` holds
-the full description and procedure — this list is only so you know what exists.
-`.agents/skills` is a **symlink** to that same directory, so agents that
-discover skills there (Codex) find them without a second copy. Do not replace
-it with real files — one skill, one file.
+`.agents/skills` is a **symlink** to `.claude/skills/`, so agents that look
+there (Codex) find the same files — never replace it with a copy. This list is
+only so you know what exists:
 
 - `capture-idea` — save a discussed fragment to `inbox/`.
 - `promote-notes` — batched `inbox/` → `notes/` promotion; slate approved first.
