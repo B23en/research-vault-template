@@ -9,7 +9,7 @@ description: Surveys inbox/ for fragments ripe for synthesis and, after user app
 
 Promotion is how the research moves up the pipeline: raw fragments crystallise
 into worked-out notes. The base agent already offers this conversationally when
-material looks ready (per the suggest-don't-spring rule in `CLAUDE.md`
+material looks ready (per the suggest-don't-spring rule in `AGENTS.md`
 `## Skills`). This skill covers the **batched, deliberate** case — the user
 wants the agent to sweep the current state, judge what is ripe, and propose a
 whole slate of promotions in one pass.
@@ -78,12 +78,12 @@ Run this phase only after the user approves — fully, partially, or with edits.
    If they renamed or reframed an item, use the updated version. If they
    rejected the whole slate, stop and report.
 8. **Allocate ids up front.** Before writing, compute the next `note-NNNN` id
-   for the *whole batch* (per `CLAUDE.md` `## Note naming`), so multiple new
+   for the *whole batch* (per `AGENTS.md` `## Note naming`), so multiple new
    notes get sequential numbers without collision.
 9. **Create the notes.** For each approved item, write the file using the
    template below. In the new note's `related`, link every source fragment as
    `[[wiki-link]]`. **Do not modify the source notes** — promotion creates a
-   new note; the originals stay where they are (per `CLAUDE.md` lifecycle:
+   new note; the originals stay where they are (per `AGENTS.md` lifecycle:
    "folders are stages", promotion is never a move or rename).
 10. **Report back.** List the new filenames, note any items the user dropped
     from the slate, and end with a question that pushes the next move — which

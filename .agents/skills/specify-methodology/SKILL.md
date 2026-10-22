@@ -44,7 +44,7 @@ has not named one, ask which note to specify before proceeding.
    `ref-` notes in `related`, and set `datasets:`/`code:` for any workspace
    artifacts it uses.
 6. **Report and continue.** Tell the user the new filenames, note any open
-   design questions, and end with a question (per `CLAUDE.md`).
+   design questions, and end with a question (per `AGENTS.md`).
 
 The experiment note also holds the rest of the experiment's life, so it ships
 with empty `## Results` and `## Problems` sections to fill in once the
@@ -53,7 +53,7 @@ live in the experiment note that produced them.
 
 ## Workspace detail
 
-`CLAUDE.md` `## Workspace` states the three rules that must hold in every
+`AGENTS.md` `## Workspace` states the three rules that must hold in every
 session. The operational detail lives here instead, where it is actually used.
 
 **Pinning a dataset entry.** Each entry in `workspace/datasets.md` records the

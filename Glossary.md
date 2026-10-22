@@ -61,7 +61,7 @@ and points to where it is decided.
 
 <!-- Codes labelling risks or open questions. Watch for collisions with other
      families — disambiguate explicitly. Example:
-     - **R1 (Q)** — feature-vs-research framing risk. cf. R1 under Routing. [[Memory]] -->
+     - **R1 (Q)** — feature-vs-research framing risk. [[Memory]] -->
 
 ## Routes / options
 

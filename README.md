@@ -1,39 +1,67 @@
 # Research Vault Template
 
-[![Built for Claude](https://img.shields.io/badge/Built%20for-Claude-D97757?logo=anthropic&logoColor=white)](https://claude.com)
+[![Built for Codex](https://img.shields.io/badge/Built%20for-Codex-1a1a1a)](https://developers.openai.com/codex)
 [![AGENTS.md compatible](https://img.shields.io/badge/AGENTS.md-compatible-1a1a1a)](https://agents.md)
 
 Template for a single-topic research knowledge vault — an Obsidian vault paired
 with an AI agent that records, verifies, and expands a research exploration
 process (notes, evidence, experiments and their results).
 
-> **Designed for Claude, portable to other agents.** The agent runs best on
-> Claude (via Claude Code or Cowork): `CLAUDE.md` provides its always-on
-> instructions and `.claude/skills/` holds the skills it invokes. Agents that
-> follow the `AGENTS.md` convention — Codex among them — read the root
-> `AGENTS.md`, a pointer that sends them to `CLAUDE.md`. It duplicates no rules,
-> so there is only ever one source of truth. Outside an agent environment, the
-> files are just Markdown.
+> **Designed for Codex, compatible with Claude Code.** `AGENTS.md` provides the
+> shared agent instructions and `.agents/skills/` holds the canonical skills.
+> `CLAUDE.md` imports `AGENTS.md`, and `.claude/skills` links to the same skill
+> files. Rules and skills each have one source of truth. Outside an agent
+> environment, the files are just Markdown.
 
 ## Using this template
 
-This repository is the canonical source for the research-agent system. You do
-not build a vault by hand — the `init-vault` skill clones this repo.
+Give your agent this repository URL and a target folder, and ask it to read
+this README and `AGENTS.md` before setting up or updating the vault. No global
+setup skill is required.
 
-1. Install `init-vault` globally at `~/.claude/skills/init-vault/`.
-2. In `init-vault/SKILL.md`, set `DEFAULT_TEMPLATE_REPO` to this repo's URL.
-3. Run `init-vault` in any project folder. It clones this template there as a
-   fresh vault and initialises the vault's own git history.
+### Create a vault
 
-To update an existing vault's skills later, run `init-vault` in update mode — it
-refreshes `.claude/skills/` from this repo without touching vault content.
+1. Inspect the target folder and any existing Git repository. Fetch this
+   template into a temporary folder, then copy its master files, skills,
+   `.gitignore`, and content folders into the target, preserving symlinks.
+   Leave the template's `.git` and this setup README behind. In an existing
+   project, preserve its files, Git history, and remotes; review conflicting
+   files before merging them.
+2. Verify the structure against `AGENTS.md`: `.agents/skills/` must be a real
+   directory and `.claude/skills` must link to `../.agents/skills`. Check that
+   `CLAUDE.md` imports `AGENTS.md` and every listed skill is readable. When
+   copying files individually or using Git without symlink support, recreate
+   the link in a filesystem that supports symlinks.
+3. For a new standalone vault, initialize its own Git history on `main` and
+   commit the scaffold. Connect and push to a separate research repository
+   only when requested; never use the template's remote as the vault's remote.
+4. Fill in `Direction.md` with the agreed research topic and scope.
+
+### Update a vault
+
+1. Fetch the latest template into a temporary folder and compare its
+   `AGENTS.md`, `CLAUDE.md`, `.agents/skills/`, and `.gitignore` with the vault.
+   Present the proposed changes before applying them.
+2. For an older Claude-first vault, migrate its layout before applying the
+   approved template updates. Merge its authoritative `CLAUDE.md` rules into
+   `AGENTS.md`, preserving local instructions from both files. Remove only
+   the old `.agents/skills` symlink, move the actual skills into
+   `.agents/skills/`, then create `.claude/skills` as a link to
+   `../.agents/skills`. Update skill references and turn `CLAUDE.md` into the
+   import file.
+3. Merge approved template changes while preserving local rules, custom
+   skills, and ignore patterns. Keep `Direction.md`, `Memory.md`, `Glossary.md`,
+   research notes, and workspace contents intact. Add missing structural files
+   or folders only when absent; do not replace existing content with templates.
+4. Verify the resulting structure, skill links, and diff before committing;
+   push only when requested.
 
 ## Layout
 
 | Path | Purpose |
 |------|---------|
-| `CLAUDE.md` | Agent configuration and vault rules |
-| `AGENTS.md` | Pointer sending `AGENTS.md`-reading agents (Codex, …) to `CLAUDE.md` |
+| `AGENTS.md` | Authoritative agent configuration and vault rules |
+| `CLAUDE.md` | Imports `AGENTS.md` for Claude Code compatibility |
 | `Direction.md` | Research direction — the verification baseline |
 | `Memory.md` | Conventions + open questions + working context |
 | `Glossary.md` | Registry of project-coined codes and abbreviations |
@@ -46,22 +74,17 @@ refreshes `.claude/skills/` from this repo without touching vault content.
 | `journal/` | Append-only record — verification reports, commissioned run reports |
 | `outputs/` | User-requested generated deliverables (summaries, visualizations, HTML) |
 | `workspace/` | Experiment code, fetch scripts, (git-ignored) datasets, and run outputs/checkpoints |
-| `.claude/skills/` | Working skills + general-purpose `grill-me` |
-| `.agents/skills` | Symlink to `.claude/skills/`, so Codex discovers the same files |
+| `.agents/skills/` | Canonical working skills + general-purpose `grill-me` |
+| `.claude/skills` | Symlink to `../.agents/skills` for Claude Code compatibility |
 
 ## Skills
 
 Working skills: `capture-idea`, `promote-notes`, `verify-consistency`,
 `specify-methodology`, `prune-master-files`, `review-direction`. Plus a
 general-purpose `grill-me` skill for stress-testing a plan or design.
-(`init-vault` is installed globally, not in the vault.)
 
 Skills are not slash commands you have to remember. Each one's `description` is
 what the agent routes on, so it offers the right skill when the conversation
 reaches the moment that skill covers — you can just talk. `review-direction` is
 the exception — it is offered only after an audit has found a conflict with
 `Direction.md`, and stays explicit-only otherwise.
-
-## After creating a vault
-
-Fill in `Direction.md` with the research topic.

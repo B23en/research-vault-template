@@ -17,14 +17,14 @@ captured the moment it appears is a fragment that survives.
 1. **Isolate the fragment.** Identify the specific idea, insight, or fact. If
    several distinct fragments came up, make one note each — `inbox/` notes are
    atomic.
-2. **Find the next id** as `CLAUDE.md` `## Note naming` describes.
+2. **Find the next id** as `AGENTS.md` `## Note naming` describes.
 3. **Pick a short title.** Lowercase, hyphen-separated, 2–5 words, English.
 4. **Create the note** at `inbox/inbox-NNNN-short-title.md` using the template
    below. Write the body in the language set by `Memory.md` `## Conventions`;
    the filename stays English either way.
 5. **Confirm and continue.** Tell the user the filename. If the conversation is
    a research discussion, end with a question that pushes the fragment further
-   (per the adaptive behavior in `CLAUDE.md`).
+   (per the adaptive behavior in `AGENTS.md`).
 
 ## Note template
 

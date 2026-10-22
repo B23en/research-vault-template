@@ -21,20 +21,20 @@ in the file. An item that is merely overlong or unclear may be reworded, too.
 
 ## What may be pruned, and under whose authority
 
-This skill invents no permissions. Each target keeps the authority `CLAUDE.md`
+This skill invents no permissions. Each target keeps the authority `AGENTS.md`
 already assigns it.
 
 | Target | Editing it is | Gate |
 |---|---|---|
-| `Memory.md` `## Working Context` | ordinary upkeep — `CLAUDE.md` has stale items removed immediately | apply directly, but still record it |
-| `Memory.md` `## Open Questions` | a *change* — `CLAUDE.md` says do not auto-prune | proposal |
+| `Memory.md` `## Working Context` | ordinary upkeep — `AGENTS.md` has stale items removed immediately | apply directly, but still record it |
+| `Memory.md` `## Open Questions` | a *change* — `AGENTS.md` says do not auto-prune | proposal |
 | `Direction.md` — `## Confirmed decisions`, `## Scope`, `## Constraints` | a *change* — the baseline is never edited without an approved proposal | proposal |
 
 ## Out of scope
 
 - **`Direction.md` `## Topic` and `## Goal`.** Changing what the research *is*
   is a direction revision, not upkeep. Say so and point at `review-direction`.
-- **`Memory.md` `## Conventions`.** Standing rules; `CLAUDE.md` says never
+- **`Memory.md` `## Conventions`.** Standing rules; `AGENTS.md` says never
   auto-prune them. Change an item only when the user names it explicitly.
 - **`Glossary.md`.** Its whole purpose is that a code stays readable months
   later, so entries are meant to outlive the notes that defined them. Pruning it
